@@ -1,0 +1,19 @@
+.block_holder {
+    position: relative;
+    overflow: hidden;
+    width: 400px;
+    height: 30px;
+    border: 2px solid #000;
+}
+
+.block_holder .block {
+    position: absolute;
+    background-color: #fce90d;
+    width: 30px;
+    height: 20px;
+    padding-top: 10px;
+    text-align: center;
+    color: #fff;
+    font-size: 10px;
+    white-space: nowrap;
+}
