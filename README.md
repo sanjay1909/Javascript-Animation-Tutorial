@@ -1,2 +1,2 @@
-# Javascript-Animation-Tutorial
-Code snippets to describe how DOM is manipulated by javascript to present animation on screen
+# Tutorials
+Code snippets to share my understanding on Javascript, DOM, HTML5, CSS and etc... to use in my blogs
