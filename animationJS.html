@@ -66,8 +66,9 @@
         }
 
         function back(progress) {
-            return Math.pow(progress, 2) * ((1.5 + 1) * progress - 1.5);
+            return Math.pow(progress, 2) * ((x + 1) * progress - x);
         }
+        var x = 5;
 
         function bounce(progress) {
             for (var a = 0, b = 1, result; 1; a += b, b /= 2) {
@@ -78,7 +79,7 @@
         }
 
         function elastic(progress) {
-            return Math.pow(2, 10 * (progress - 1)) * Math.cos(20 * Math.PI * 1.5 / 3 * progress);
+            return Math.pow(2, 10 * (progress - 1)) * Math.cos(20 * Math.PI * x / 3 * progress);
         }
     </script>
 </head>
