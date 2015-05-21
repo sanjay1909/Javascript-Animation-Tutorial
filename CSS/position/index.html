@@ -2,14 +2,31 @@
 <html lang="en">
 
 <head>
-    <title>Absolute</title>
+    <title>CSS - Position</title>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
     <style>
         /* Non-essential styles */
 
         iframe {
             width: 100%;
-            height: 360px;
+            height: 310px;
+        }
+
+        header {
+            padding: 40px 120px 20px 120px;
+            border-bottom: 1px solid #eee;
+            background-color: #d8d4d4;
+        }
+
+        section {
+            margin-left: 120px;
+            margin-right: 120px;
+        }
+
+        footer {
+            position: fixed;
+            bottom: 5px;
+            border-top: 1px solid #eee;
         }
     </style>
     <!--[if lte IE 6]>
@@ -18,29 +35,61 @@
 </head>
 
 <body>
-    <div>
+    <div id="fb-root"></div>
+    <script>
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.3&appId=752510261471542";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+
+
+    <!-- Place this tag where you want the share button to render. -->
+
+
+    <header>
         <h2>Positioning</h2>
+        <div style="float:left">
+            <div class="fb-like" data-href="http://sanjay1909.github.io/Tutorials/CSS/position/index.html" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
+
+        </div>
+        <div style="float:right">
+            <div class="g-plusone" data-href="http://sanjay1909.github.io/Tutorials/CSS/position/index.html"></div>
+            <div class="g-plus" data-action="share" data-annotation="bubble" data-height="30" data-href="http://sanjay1909.github.io/Tutorials/CSS/position/index.html"></div>
+        </div>
+    </header>
+    <section>
         <p>The CSS positioning properties<b>[top, bottom, left, and right]</b> allow you to position an element. However, these properties will not work unless the <b>position property</b> is set first. They also work differently depending on the positioning method. There are 4 positioning methods. </p>
         <ul>
-            <li>Static (Default) </li>
-            <li>Fixed (Based on window)</li>
+            <li>Static (Default) - positioned according to the <u><i>normal flow</i></u> of the page.They are <u><i>not</i></u> affected by the <strike>top, bottom, left, and right</strike> properties </li>
+            <li>Fixed (Based on window) - will <u><i>not</i></u> <strike>move</strike> even if the window is scrolled</li>
             <li>Relative (Based on its own Position)</li>
-            <li>Absolute (Based on its parent, whose position is not static)</li>
+            <li>Absolute (Based on its any of its ancestoral parent, whose position is not static) - If no such element is found, the containing block is HTML</li>
         </ul>
-    </div>
-    <div style="float:left;width:48%;margin:1%">
-        <h2>Normal Flow</h2>
-        <iframe src="normal.html">
 
-        </iframe>
-    </div>
 
-    <div style="float:left;width:48%;margin:1%">
-        <h2>Flow Altered with position Property</h2>
-        <iframe src="after.html">
+        <div style="float:left;width:48%;margin:1%">
+            <h3>Normal Flow</h3>
+            <iframe src="normal.html">
 
-        </iframe>
-    </div>
+            </iframe>
+        </div>
+
+        <div style="float:left;width:48%;margin:1%">
+            <h3>Flow Altered with position Property</h3>
+            <iframe src="after.html">
+
+            </iframe>
+        </div>
+
+
+    </section>
 
 
 

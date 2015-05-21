@@ -8,14 +8,14 @@
         /* Non-essential styles */
 
         *.static {
-            height: 60px;
+            height: 50px;
             border: 1px solid #c4c1c1;
             margin: 5px;
             padding: 4px;
         }
 
         *.relative {
-            height: 60px;
+            height: 50px;
             border: 1px solid #c4c1c1;
             margin: 5px;
             padding: 4px;
@@ -101,20 +101,20 @@
 </head>
 
 <body>
-    <h1>CSS - Position</h1>
+    <h3>CSS - Position</h3>
 
     <div class="relative">Div1[Block]: <big><b>Relative</b></big>...
-        <span class="absolute">Span1[inline]:<big><b>Absolute</b></big> - "positioned based on <u><i>first parent</i></u> [Div1] that has a <u><i>position</i></u> other than <u><i>static</i></u>. If no such element is found, the containing block is HTML". In this case its postioned based on Div1(relative) by <u><i>top: [16px]</i></u> and <u><i>left: [10px]</i></u></span>
+        <span class="absolute">Span1[inline]:<big><b>Absolute</b></big> - In this case it has an ancestoral parent Div1(relative), thus postioned based on Div1 by <u><i>top: [16px]</i></u> and <u><i>left: [10px]</i></u></span>
     </div>
     <div class="static">Div2[Block]: <big><b>Static</b></big>...
-        <span class="absolute2">Span2[inline]:<big><b>Absolute</b></big> - "positioned based on <u><i>first parent</i></u> [Div1] that has a <u><i>position</i></u> other than <u><i>static</i></u>. If no such element is found, the containing block is HTML".  In this case ancestoral parent Div2 - <u><i>static</i></u>, so instead of appearing <u><i>iniside</i></u> Div2, Span2 appears based on <u><i>HTML</i></u> block by <u><i>top: [0px]</i></u> and <u><i>left: [60px]</i></u></span>
+        <span class="absolute2">Span2[inline]:<big><b>Absolute</b></big> - In this case ancestoral parent Div2 is <u><i>static</i></u>, thus instead of appearing <u><i>inside</i></u> Div2, Span2 appears based on <u><i>HTML</i></u> block, by <u><i>top: [0px]</i></u> and <u><i>left: [60px]</i></u></span>
     </div>
     <div class="static">Div3[Block]: <big><b>Static</b></big>...
-        <span class="fixed">Span3[inline]: <big><b>Fixed</b></big> - positioned based on <u><i>browser window</i></u>, and will <u><i>not</i></u> <strike>move</strike> even if the window is scrolled. In this case moved to <u><i>top: [140px]</i></u> and <u><i>right: [5px]</i></u> based on windows position</span>
+        <span class="fixed">Span3[inline]: <big><b>Fixed</b></big> - In this case moved based on window position by <u><i>top: [140px]</i></u> and <u><i>right: [5px]</i></u> </span>
     </div>
 
     <div class="static">Div4[Block]: <big><b>Static</b></big>...
-        <span class="relativeSpan">Span4[inline]: <big><b>Relative</b></big> - positioned based on its <u><i>normal</i></u> position. In this case moved to <u><i>top: [-10px]</i></u>and <u><i>left: [20px]</i></u> from its normal position</span>
+        <span class="relativeSpan">Span4[inline]: <big><b>Relative</b></big> - In this case moved from its normal position by <u><i>top: [-10px]</i></u>and <u><i>left: [20px]</i></u> </span>
     </div>
 
 </body>
