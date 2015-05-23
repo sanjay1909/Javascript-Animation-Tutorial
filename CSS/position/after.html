@@ -26,7 +26,7 @@
             padding-right: 8px;
             padding-top: 2px;
             padding-bottom: 2px;
-            border: 2px solid black;
+            border: 1px solid black;
             border-radius: 16px;
             background-color: gold;
             opacity: 0.8;
@@ -38,7 +38,7 @@
             padding-right: 8px;
             padding-top: 2px;
             padding-bottom: 2px;
-            border: 2px solid black;
+            border: 1px solid black;
             border-radius: 16px;
             background-color: #fad7a7;
             opacity: 0.8;
@@ -46,8 +46,10 @@
         }
 
         .relativeSpan {
-            border: 2px solid black;
+            border: 1px solid black;
             border-radius: 16px;
+            padding-left: 8px;
+            padding-right: 8px;
             background-color: #ffd9f8;
             opacity: 0.8;
             text-align: justify;
@@ -59,7 +61,7 @@
             padding-right: 8px;
             padding-top: 2px;
             padding-bottom: 2px;
-            border: 2px solid black;
+            border: 1px solid black;
             background-color: azure;
             border-radius: 8px;
             opacity: 0.8;
@@ -103,18 +105,18 @@
 <body>
     <h3>CSS - Position</h3>
 
-    <div class="relative">Div1[Block]: <big><b>Relative</b></big>...
-        <span class="absolute">Span1[inline]:<big><b>Absolute</b></big> - In this case it has an ancestoral parent Div1(relative), thus postioned based on Div1 by <u><i>top: [16px]</i></u> and <u><i>left: [10px]</i></u></span>
+    <div class="relative">Div-1: <big><b>Relative</b></big>...
+        <span class="absolute">Span-1: <big><b>Absolute</b></big> - has an ancestoral parent Div-1 with position:Relative, thus postioned based on Div-1 by <u><i>top: [16px]</i></u> and <u><i>left: [10px]</i></u></span>
     </div>
-    <div class="static">Div2[Block]: <big><b>Static</b></big>...
-        <span class="absolute2">Span2[inline]:<big><b>Absolute</b></big> - In this case ancestoral parent Div2 is <u><i>static</i></u>, thus instead of appearing <u><i>inside</i></u> Div2, Span2 appears based on <u><i>HTML</i></u> block, by <u><i>top: [0px]</i></u> and <u><i>left: [60px]</i></u></span>
+    <div class="static">Div-2: <big><b>Static</b></big>...
+        <span class="absolute2">Span-2: <big><b>Absolute</b></big> - has no ancestoral parent with position other than static, thus instead of appearing <u><i>inside</i></u> Div-2, Span-2 appears based on <u><i>HTML</i></u> block, by <u><i>top: [0px]</i></u> and <u><i>left: [60px]</i></u></span>
     </div>
-    <div class="static">Div3[Block]: <big><b>Static</b></big>...
-        <span class="fixed">Span3[inline]: <big><b>Fixed</b></big> - In this case moved based on window position by <u><i>top: [140px]</i></u> and <u><i>right: [5px]</i></u> </span>
+    <div class="static">Div-3: <big><b>Static</b></big>...
+        <span class="fixed">Span-3: <big><b>Fixed</b></big> - positioned based on window position by <u><i>top: [140px]</i></u> and <u><i>right: [5px]</i></u> </span>
     </div>
 
-    <div class="static">Div4[Block]: <big><b>Static</b></big>...
-        <span class="relativeSpan">Span4[inline]: <big><b>Relative</b></big> - In this case moved from its normal position by <u><i>top: [-10px]</i></u>and <u><i>left: [20px]</i></u> </span>
+    <div class="static">Div-4: <big><b>Static</b></big>...
+        <span class="relativeSpan">Span-4: <big><b>Relative</b></big> - moved from its normal position by <u><i>top: [-10px]</i></u>and <u><i>left: [20px]</i></u> </span>
     </div>
 
 </body>
