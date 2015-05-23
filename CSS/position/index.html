@@ -9,11 +9,12 @@
 
         iframe {
             width: 100%;
-            height: 310px;
+            height: 300px;
+            border: 1px solid #d0cccc;
         }
 
         header {
-            padding: 40px 120px 20px 120px;
+            padding: 20px 120px 20px 120px;
             border-bottom: 1px solid #eee;
             background-color: #d8d4d4;
         }
@@ -24,9 +25,15 @@
         }
 
         footer {
-            position: fixed;
-            bottom: 5px;
-            border-top: 1px solid #eee;
+            padding: 20px 120px 20px 120px;
+            background-color: #d8d4d4;
+        }
+
+        .thank-you {
+            margin-left: auto;
+            margin-right: auto;
+            border: 1px solid #656565;
+            border-radius: 8px;
         }
     </style>
     <!--[if lte IE 6]>
@@ -42,7 +49,7 @@
             if (d.getElementById(id)) return;
             js = d.createElement(s);
             js.id = id;
-            js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.3&appId=752510261471542";
+            js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.3&appId=635018559976142";
             fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));
     </script>
@@ -54,46 +61,52 @@
 
 
     <header>
-        <h2>Positioning</h2>
-        <div style="float:left">
-            <div class="fb-like" data-href="http://sanjay1909.github.io/Tutorials/CSS/position/index.html" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
+        <h1>CSS - Positioning</h1>
+        <div style="position:relative; padding-bottom:10px;">
+            <div style="position:absolute; left:0px">
+                <div class="fb-like" data-href="http://sanjay1909.github.io/Tutorials/CSS/position/index.html" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
 
+            </div>
+            <div style="position:absolute; right:0px">
+                <div class="g-plusone" data-size="medium" data-href="http://sanjay1909.github.io/Tutorials/CSS/position/index.html"></div>
+                <div class="g-plus" data-action="share" data-annotation="bubble" data-href="http://sanjay1909.github.io/Tutorials/CSS/position/index.html"></div>
+            </div>
         </div>
-        <div style="float:right">
-            <div class="g-plusone" data-href="http://sanjay1909.github.io/Tutorials/CSS/position/index.html"></div>
-            <div class="g-plus" data-action="share" data-annotation="bubble" data-height="30" data-href="http://sanjay1909.github.io/Tutorials/CSS/position/index.html"></div>
-        </div>
+
     </header>
     <section>
         <p>The CSS positioning properties<b>[top, bottom, left, and right]</b> allow you to position an element. However, these properties will not work unless the <b>position property</b> is set first. They also work differently depending on the positioning method. There are 4 positioning methods. </p>
         <ul>
-            <li>Static (Default) - positioned according to the <u><i>normal flow</i></u> of the page.They are <u><i>not</i></u> affected by the <strike>top, bottom, left, and right</strike> properties </li>
-            <li>Fixed (Based on window) - will <u><i>not</i></u> <strike>move</strike> even if the window is scrolled</li>
-            <li>Relative (Based on its own Position)</li>
-            <li>Absolute (Based on its any of its ancestoral parent, whose position is not static) - If no such element is found, the containing block is HTML</li>
+            <li><b>Static</b> (Default) - positioned according to the <u><i>normal flow</i></u> of the page.They are <u><i>not</i></u> affected by the <strike>top, bottom, left, and right</strike> properties </li>
+            <li><b>Fixed</b> (Based on window) - will <u><i>not</i></u> <strike>move</strike> even if the window is scrolled</li>
+            <li><b>Relative</b> (Based on its own Position)</li>
+            <li><b>Absolute</b> (Based on any of its ancestoral parent, whose position is not static) - If no such element is found, the containing block is HTML</li>
         </ul>
 
+        <div>
+            <div style="display: inline-block;width:48%;">
+                <h3>Normal Flow</h3>
+                <iframe src=" normal.html ">
 
-        <div style="float:left;width:48%;margin:1%">
-            <h3>Normal Flow</h3>
-            <iframe src="normal.html">
+                </iframe>
+            </div>
 
-            </iframe>
+            <div style="display: inline-block;width:48%;">
+                <h3>Flow Altered with position Property</h3>
+                <iframe src="after.html ">
+
+                </iframe>
+            </div>
         </div>
-
-        <div style="float:left;width:48%;margin:1%">
-            <h3>Flow Altered with position Property</h3>
-            <iframe src="after.html">
-
-            </iframe>
-        </div>
-
 
     </section>
+    <footer>
+        <div class="thank-you">
+            <div class="fb-comments" style="margin-left:auto;margin-right:auto" data-href="http://sanjay1909.github.io/Tutorials/CSS/position/index.html" data-numposts="5" data-colorscheme="light"></div>
+        </div>
 
 
-
-
+    </footer>
 
 
 </body>
