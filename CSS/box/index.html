@@ -68,41 +68,47 @@
 
     </header>
     <section>
-        <p>In order to set the width and height of an element correctly in all browsers, we need to know how the box model works. Total size of the element to render on the screen is calculated based on these 4 CSS properties</p>
+        <p>In order to set the width and height of an element correctly in all browsers, we need to know how the box model works. Total size of the element to render on the screen is calculated based on below mentioned 4 CSS properties</p>
 
-        <div>
-            <span>1. Margin: </span>
-            <input type="range" min=0 max=25 value=0 id="margin" oninput="outputUpdate.call(this,value)"></input>
-            <output for="margin" id="marginOutput"></output>
-        </div>
-        <div>
-            <span>2. Border: </span>
-            <input type="range" min=0 max=25 value=0 id="borderWidth" oninput="outputUpdate.call(this,value)"> </input>
-            <output for="borderWidth" id="borderWidthOutput"></output>
-        </div>
-        <div>
-            <span>3. Margin: </span>
-            <input type="range" min=0 max=25 value=0 id="padding" oninput="outputUpdate.call(this,value)"> </input>
-            <output for="padding" id="paddingOutput"></output>
-        </div>
-        <div>
-            <span>4. Width: </span>
-            <input type="range" min=0 max=300 value=300 id="width" oninput="outputUpdate.call(this,value)"> </input>
-            <output for="width" id="widthOutput"></output>
-        </div>
-        <br/>
-        <br/>
-        <div>Div total size depends on Margin + border + Padding + width(content)</div>
-        <br/>
-        <br/>
-        <div id="demo">CSS Box Model </div>
-        <div>
-            <div class="dotted-box" style="width:450px;">
-                <div class="solid-box" style="width:350px;margin:25px">
-                    <div class="dotted-box" style="width:250px;margin:25px;background-color:gold;">CSS Box Model(width 250px)</div>
+
+
+        <div style="position:relative;width:750px;height:250px;margin-right:auto;margin-left:auto;">
+            <div style="position:absolute;top:80px;left:0px">
+                <div>
+                    <span style="display:inline-block;width:80px">1. Margin: </span>
+                    <input type="range" min=0 max=25 value=0 id="margin" oninput="outputUpdate.call(this,value)"></input>
+                    <output for="margin" id="marginOutput"></output>
+                </div>
+                <div>
+                    <span style="display:inline-block;width:80px">2. Border: </span>
+                    <input type="range" min=0 max=25 value=0 id="borderWidth" oninput="outputUpdate.call(this,value)"> </input>
+                    <output for="borderWidth" id="borderWidthOutput"></output>
+                </div>
+                <div>
+                    <span style="display:inline-block;width:80px">3. Padding: </span>
+                    <input type="range" min=0 max=25 value=0 id="padding" oninput="outputUpdate.call(this,value)"> </input>
+                    <output for="padding" id="paddingOutput"></output>
+                </div>
+                <div>
+                    <span style="display:inline-block;width:80px">4. Width: </span>
+                    <input type="range" min=0 max=300 value=300 id="width" oninput="outputUpdate.call(this,value)"> </input>
+                    <output for="width" id="widthOutput"></output>
                 </div>
             </div>
+            <div style="position:absolute;top:40px;left:300px;">
+                <div class="dotted-box">
+
+                    <div id="demo" style="background-color:gold;">CSS Box Model </div>
+                </div>
+            </div>
+            <p style="margin-right:auto;margin-left:auto;"><u>Total Width:</u> Margin <strong><big><span id="marginID"></span></big></strong>px + border <strong><big><span id="borderID"></span></big></strong>px + Padding <strong><big><span id="padID"></span></big></strong>px + width(content) <strong><big><span id="widthID"></span></big></strong>px = <strong><big><span id="total"></span></big></strong>px.
+            </p>
+
         </div>
+
+        <br/>
+        <br/>
+
     </section>
 
 
@@ -119,7 +125,14 @@
             document.querySelector('#' + this.id + 'Output').value = val;
             if (this.id === 'borderWidth') demo.style.borderStyle = 'solid';
             demo.style[this.id] = val + 'px';
+            borderID.textContent = borderWidth.value;
+            marginID.textContent = margin.value;
+            padID.textContent = padding.value;
+            widthID.textContent = width.value;
+            total.textContent = (2 * borderWidth.value + 2 * margin.value + 2 * padding.value) + Number(width.value);
         }
+        widthOutput.value = 300;
+        demo.style['width'] = '300px';
     </script>
 
 </body>
