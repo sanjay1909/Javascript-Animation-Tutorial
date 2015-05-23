@@ -1,0 +1,19 @@
+<?xml version="1.0" ?>
+<rss version="2.0">
+    <channel>
+        <title>Sanjay's Understanding</title>
+        <link>http://sanjay1909.github.io/Tutorials/index.html</link>
+        <description>Learn,learn,learn by sharing, learn</description>
+
+        <item>
+            <title>CSS - Position</title>
+            <link>http://sanjay1909.github.io/Tutorials/CSS/position/index.html</link>
+            <description>Position property explained with comparison.</description>
+        </item>
+        <item>
+            <title>CSS - Boxmodel</title>
+            <link>http://sanjay1909.github.io/Tutorials/CSS/box/index.html</link>
+            <description>Sizing properties Explained with demo.</description>
+        </item>
+    </channel>
+</rss>
