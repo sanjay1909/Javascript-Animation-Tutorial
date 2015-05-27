@@ -5,12 +5,20 @@
     <title>CSS - Position</title>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
     <style>
-        /* Non-essential styles */
+        .static {
+            padding: 4px;
+        }
 
-        iframe {
-            width: 100%;
-            height: 300px;
-            border: 1px solid #d0cccc;
+        .border {
+            border: 1px solid #c4c1c1;
+            border-radius: 8px;
+        }
+
+        .spanClasss {
+            padding: 2px;
+            border: 1px solid black;
+            border-radius: 8px;
+            background-color: gold;
         }
 
         header {
@@ -34,6 +42,7 @@
             margin-right: auto;
             border: 1px solid #656565;
             border-radius: 8px;
+            overflow: hidden;
         }
     </style>
     <!--[if lte IE 6]>
@@ -78,35 +87,133 @@
         <p>The CSS positioning properties<b>[top, bottom, left, and right]</b> allow you to position an element. However, these properties will not work unless the <b>position property</b> is set first. They also work differently depending on the positioning method. There are 4 positioning methods. </p>
         <ul>
             <li><b>Static</b> (Default) - positioned according to the <u><i>normal flow</i></u> of the page.They are <u><i>not</i></u> affected by the <strike>top, bottom, left, and right</strike> properties </li>
-            <li><b>Fixed</b> (Based on window) - will <u><i>not</i></u> <strike>move</strike> even if the window is scrolled</li>
+            <li><b>Fixed</b> (Based on window) - will <u><i>not</i></u> <strike>move</strike> even if the window is scrolled. Display properties will be computed as block</li>
             <li><b>Relative</b> (Based on its own Position)</li>
-            <li><b>Absolute</b> (Based on any of its ancestoral parent, whose position is not static) - If no such element is found, the containing block is HTML</li>
+            <li><b>Absolute</b> (Based on any of its ancestoral parent, whose position is not static) - If no such element is found, the containing block is HTML. Display properties will be computed as block</li>
         </ul>
 
-        <div>
-            <div style="display: inline-block;width:48%;">
-                <h3>Normal Flow</h3>
-                <iframe src=" normal.html ">
+        <div style="overflow:hidden;">
+            <div class="border" style="display: inline-block;width:68%;height:420px;overflow:hidden">
+                <div class="static">
+                    <div>
+                        <h4>Inflow</h4>
+                        <input type="radio" name="position" value="static" onclick="positionHandler(spn)">Static</input>
+                        </br>
+                        <input type="radio" name="position" value="relative" onclick="positionHandler(spn)">Relative</input>
+                        </br>
+                        <h4>Out of flow</h4>
+                        <input type="radio" name="position" value="absolute2" onclick="positionHandler(spn)">Absolute: Ancestor(Non-Static)</input>
+                        </br>
+                        <input type="radio" name="position" value="absolute" onclick="positionHandler(spn)">Absolute: Ancestor(Static)</input>
+                        </br>
+                        <input type="radio" name="position" value="fixed" onclick="positionHandler(spn)">Fixed</input>
 
-                </iframe>
+
+                    </div>
+                </div>
+                <div class="static" style="margin-top:20px">
+                    <div>
+                        <span style="display:inline-block;width:70px">1. Top: </span>
+                        <input type="range" min=0 max=300 value=0 id="rtop" oninput="outputUpdate.call(this,value,spn)"></input>
+                        <output for="rtop" id="rtopOutput"></output>
+                    </div>
+                    <div>
+                        <span style="display:inline-block;width:70px">2. Left: </span>
+                        <input type="range" min=0 max=200 value=0 id="rleft" oninput="outputUpdate.call(this,value,spn)"> </input>
+                        <output for="rleft" id="rleftOutput"></output>
+                    </div>
+                    <div>
+                        <span style=" display:inline-block;width:70px ">3. Bottom: </span>
+                        <input type="range" min=0 max=300 value=0 id="rbottom" oninput="outputUpdate.call(this,value,spn) "> </input>
+                        <output for="rbottom" id="rbottomOutput"></output>
+                    </div>
+                    <div>
+                        <span style="display:inline-block;width:70px ">4. Right: </span>
+                        <input type="range" min=0 max=200 value=0 id="rright" oninput="outputUpdate.call(this,value,spn) "> </input>
+                        <output for="rright" id="rrightOutput"></output>
+                    </div>
+
+                </div>
             </div>
+            <div class="border" style="display: inline-block;width:28%;height:420px;overflow:hidden" id="grandParentContainer">
+                <div class="static border" style="margin:20px;padding:20px" id="parentContainer">
+                    <span class="spanClasss" id="spn"> Span: I am <big><b>Static</b></big> - positioned according to the <u><i>normal flow</i></u> of the page. My default display - inline</span>
+                </div>
 
-            <div style="display: inline-block;width:48%;">
-                <h3>Flow Altered with position Property</h3>
-                <iframe src="after.html ">
-
-                </iframe>
             </div>
         </div>
 
     </section>
     <footer>
         <div class="thank-you">
-            <div class="fb-comments" style="margin-left:auto;margin-right:auto" data-href="http://sanjay1909.github.io/Tutorials/CSS/position/index.html" data-numposts="5" data-colorscheme="light"></div>
+            <div class="fb-comments" style="position:relative;left:120px;right:120px" data-href="http://sanjay1909.github.io/Tutorials/CSS/position/index.html" data-numposts="5" data-colorscheme="light"></div>
         </div>
 
 
     </footer>
+    <script type="application/javascript">
+        var positionValue;
+
+        function positionHandler(respectiveSpan) {
+
+            var postions = document.getElementsByName("position");
+            for (var i = 0; i < postions.length; i++) {
+                if (postions[i].checked == true) {
+                    positionValue = postions[i].value;
+                    if (postions[i].value !== "absolute2") {
+                        document.getElementById('grandParentContainer').style.position = 'static';
+                        respectiveSpan.style.position = postions[i].value;
+                        console.log('display: ', respectiveSpan.style.display);
+                    } else {
+
+                        document.getElementById('grandParentContainer').style.position = 'relative';
+                        respectiveSpan.style.position = 'absolute';
+                        respectiveSpan.innerHTML = 'Span: I am <big><b>Absolute</b></big> - positioned according to the ancestor - DIV (Postion: relative). My display will turn to block and my size if not specified, will occupy the entire space of the container I belong. my size is determined from top , bottom , left and right edges of my container. My orginal container height will turn zero, in this case box height = pading(20 + 20)px + margin(20 + 20)px + border(0) px + height(0)px = 80 px';
+
+                    }
+
+                    if (positionValue === 'absolute' || positionValue === 'fixed')
+                        respectiveSpan.style.left = String(380 + Number(rleft.value)) + 'px';
+                    else
+                        respectiveSpan.style.left = rleft.value + 'px';
+
+                    if (postions[i].value === "static") {
+                        respectiveSpan.innerHTML = 'Span: I am <big><b>Static</b></big> - positioned according to the <u><i>normal flow</i></u> of the page. My default display - inline';
+                    } else if (postions[i].value === "relative") {
+                        respectiveSpan.innerHTML = 'Span: I am <big><b>Realtive</b></big> - I am still part of normal flow of the page, but i can me moved form my original position. My display still stays as - inline';
+                    } else if (postions[i].value === "fixed") {
+                        respectiveSpan.innerHTML = 'Span: I am <big><b>Fixed</b></big> - I am not part of page flow anymore, i am fixed based on window position. My size is determined from top , bottom , left and right edges of my container. For better viewing experience, my left edge is set to 380px. My orginal container height will turn zero, in this case box height = pading(20 + 20)px + margin(20 + 20)px + border(0) px + height(0)px = 80 px';
+                    } else if (postions[i].value === "absolute") {
+                        respectiveSpan.innerHTML = 'Span: I am <big><b>Absolute</b></big> - positioned according to the ancestor. In this case my parent DIV and Grandparent DIV both are position:Static. SO i have to take my positon based on HTML block. My display will turn into block and my size if not specified, will occupy the entire space of the container(in this case HTML page) I belong. Or my size is determined from top , bottom , left and right edges of my container. For better viewing experience, my left edge is set to 380px. My orginal container height will turn zero, in this case box height = pading(20 + 20)px + margin(20 + 20)px + border(0) px + height(0)px = 80 px';
+                    }
+
+
+                }
+            }
+
+
+        }
+
+        function outputUpdate(val, respectiveSpan) {
+            document.querySelector('#' + this.id + 'Output').value = val;
+
+            //respectiveSpan.style.display = 'inline';
+            // http://reference.sitepoint.com/css/displaypositionfloat
+            //inline will turn to block - for absolute and fixed
+            respectiveSpan.style.top = rtop.value + 'px';
+            if (positionValue === 'absolute' || positionValue === 'fixed')
+                respectiveSpan.style.left = String(380 + Number(rleft.value)) + 'px';
+            else
+                respectiveSpan.style.left = rleft.value + 'px';
+            respectiveSpan.style.bottom = rbottom.value + 'px';
+            respectiveSpan.style.right = rright.value + 'px';
+            //respectiveSpan.style.height = '100px';
+            respectiveSpan.style.height = 'auto';
+            console.log('display: ', respectiveSpan.style.display);
+            console.log(respectiveSpan.style.position, respectiveSpan.style.left);
+
+        }
+    </script>
 
 
 </body>
