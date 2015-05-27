@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>CSS Display</title>
+    <link rel="stylesheet" href="../../tutorial.css" media="all" type="text/css" />
+    <style>
+        .dotted-box {
+            border: 1px dotted gray;
+            display: inline-block;
+        }
+
+        .solid-box {
+            border: 25px solid gray;
+        }
+
+        #demo {
+            background-color: gold;
+        }
+
+        .static {
+            padding: 4px;
+        }
+
+        .border {
+            border: 1px solid #c4c1c1;
+            border-radius: 8px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="fb-root"></div>
+    <script>
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.3&appId=635018559976142";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+
+    <header>
+        <h1>CSS - Display</h1>
+        <div style="position:relative; padding-bottom:10px;">
+            <div style="position:absolute; left:0px">
+                <div class="fb-like" data-href="http://sanjay1909.github.io/Tutorials/CSS/display/index.html" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
+
+            </div>
+            <div style="position:absolute; right:0px">
+                <div class="g-plusone" data-size="medium" data-href="http://sanjay1909.github.io/Tutorials/CSS/display/index.html"></div>
+                <div class="g-plus" data-action="share" data-annotation="bubble" data-href="http://sanjay1909.github.io/Tutorials/CSS/display/index.html"></div>
+            </div>
+        </div>
+
+    </header>
+    <section>
+        <p>Every element on a page is a <b>rectangular</b> box. Behavior of this box is determined by the CSS display property.</p>
+
+        <div style="overflow:hidden;">
+            <div class="border" style="display:inline-block;width:42%;height:260px;padding:20px;overflow:hidden">
+                <div class="static">
+                    <div>
+                        <input type="radio" name="display" value="inline" onclick="displayHandler()">Inline</input>
+                        </br>
+                        <input type="radio" name="display" value="inline-block" onclick="displayHandler()">Inline-Block</input>
+                        </br>
+                        <input type="radio" name="display" value="block" onclick="displayHandler()">Block</input>
+                        </br>
+                        <input type="radio" name="display" value="none" onclick="displayHandler()">None</input>
+                    </div>
+                </div>
+                <div class="static" style="margin-top:20px">
+                    <div>
+                        <span style="display:inline-block;width:80px">1. Margin: </span>
+                        <input type="range" min=0 max=25 value=0 id="margin" oninput="outputUpdate.call(this,value)"></input>
+                        <output for="margin" id="marginOutput"></output>
+                    </div>
+                    <div>
+                        <span style="display:inline-block;width:80px">2. Border: </span>
+                        <input type="range" min=0 max=25 value=0 id="borderWidth" oninput="outputUpdate.call(this,value)"> </input>
+                        <output for="borderWidth" id="borderWidthOutput"></output>
+                    </div>
+                    <div>
+                        <span style="display:inline-block;width:80px">3. Padding: </span>
+                        <input type="range" min=0 max=25 value=0 id="padding" oninput="outputUpdate.call(this,value)"> </input>
+                        <output for="padding" id="paddingOutput"></output>
+                    </div>
+                    <div>
+                        <span style="display:inline-block;width:80px">4. Width: </span>
+                        <input type="range" min=0 max=300 value=300 id="width" oninput="outputUpdate.call(this,value)"> </input>
+                        <output for="width" id="widthOutput"></output>
+                    </div>
+
+                </div>
+            </div>
+            <div class="border" style="display:inline-block;width:42%;height:260px;overflow:hidden;padding:20px" id="grandParentContainer">
+                <div class="dotted-box">
+                    <p>Hi, I am SPAN element my <b>display</b> property: <b><span id="demo">inline</span></b>.<span id="summary">When you set margin and padding, I will push other elements <b>horizontally</b> away, not vertically. I <b>ignore height and width</b> property.</span>
+                    </p>
+
+
+                </div>
+
+            </div>
+        </div>
+
+
+
+        <br/>
+        <br/>
+
+    </section>
+
+
+    <footer>
+        <div class="thank-you">
+            <div class="fb-comments" style="margin-left:auto;margin-right:auto" data-href="http://sanjay1909.github.io/Tutorials/CSS/display/index.html" data-numposts="5" data-colorscheme="light"></div>
+        </div>
+
+
+    </footer>
+
+    <script>
+        var positionValue;
+
+        function displayHandler() {
+
+            var displays = document.getElementsByName("display");
+            for (var i = 0; i < displays.length; i++) {
+                if (displays[i].checked == true) {
+                    demo.style.display = displays[i].value;
+                    demo.textContent = displays[i].value;
+
+                    if (displays[i].value === "inline") {
+
+                        summary.innerHTML = 'When you set margin and padding, I will push other elements <b>horizontally</b> away, not vertically. I <b>ignore height and width</b> property.';
+                    } else if (displays[i].value === "inline-block") {
+                        summary.innerHTML = 'When you set margin and padding, I will push other elements both <b>horizontally and vertically</b>. I <b>consider height and width</b> property. and adjust rest of the elements';
+                    } else if (displays[i].value === "block") {
+                        summary.innerHTML = 'I will take up the entire horizontal space, irrespective of the width property';
+                    } else if (displays[i].value === "none") {
+                        summary.innerHTML = 'I wont get rendered and I will be  removed from the page. But I am still in the DOM';
+                    }
+
+
+                }
+            }
+
+
+        }
+
+        function outputUpdate(val) {
+            document.querySelector('#' + this.id + 'Output').value = val;
+            if (this.id === 'borderWidth') demo.style.borderStyle = 'solid';
+            demo.style[this.id] = val + 'px';
+
+        }
+    </script>
+
+</body>
+
+</html>
