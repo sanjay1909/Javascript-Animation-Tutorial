@@ -1,0 +1,23 @@
+ header {
+     padding: 20px 120px 20px 120px;
+     border-bottom: 1px solid #eee;
+     background-color: #eee;
+ }
+
+ section {
+     margin-left: 120px;
+     margin-right: 120px;
+ }
+
+ footer {
+     padding: 20px 120px 20px 120px;
+     background-color: #eee;
+ }
+
+ .thank-you {
+     margin-left: auto;
+     margin-right: auto;
+     border: 1px solid #656565;
+     border-radius: 8px;
+     overflow: hidden;
+ }
