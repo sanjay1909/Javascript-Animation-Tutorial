@@ -18,6 +18,10 @@
             background-color: gold;
         }
 
+        #demo2 {
+            background-color: greenyellow;
+        }
+
         .static {
             padding: 4px;
         }
@@ -60,10 +64,10 @@
 
     </header>
     <section>
-        <p>Every element on a page is a <b>rectangular</b> box. Behavior of this box is determined by the CSS display property.</p>
+        <p>Every element on a page is a <b>rectangular</b> box. Behavior of this box is determined by the CSS display property. Elements are classified as Block or Inline elements based on display property. Block elements are considered as container, they can hold block and inline elements.Inline elements can hold another inlin element but cannot hold a block level Element.</p>
 
         <div style="overflow:hidden;">
-            <div class="border" style="display:inline-block;width:42%;height:260px;padding:20px;overflow:hidden">
+            <div class="border" style="display:inline-block;width:42%;height:420px;padding:20px;overflow:hidden">
                 <div class="static">
                     <div>
                         <input type="radio" name="display" value="inline" onclick="displayHandler()">Inline</input>
@@ -99,10 +103,17 @@
 
                 </div>
             </div>
-            <div class="border" style="display:inline-block;width:42%;height:260px;overflow:hidden;padding:20px" id="grandParentContainer">
+            <div class="border" style="display:inline-block;width:42%;height:420px;overflow:hidden;padding:20px" id="grandParentContainer">
                 <div class="dotted-box">
-                    <p>Hi, I am SPAN element my <b>display</b> property: <b><span id="demo">inline</span></b>.<span id="summary">When you set margin and padding, I will push other elements <b>horizontally</b> away, not vertically. I <b>ignore height and width</b> property.</span>
-                    </p>
+                    <div>Hi, I am SPAN element with <b>display</b>: <b><span id="demo"><span id="spn1">inline</span>(Span)</span></b>,<span id="summary">When you set margin and padding, I will push other elements <b>horizontally</b> away, not vertically. I <b>ignore height and width</b> property.</span>
+                    </div>
+
+
+                </div>
+
+                <div class="dotted-box" style="margin-top:10px;">
+                    <div>Hi, I am DIV element with one Div element nested and <b>display</b>: <b><div id="demo2"><div><span id="spn2">block</span>(Nested  Div). </div></div></b><span id="summary2">I will take up the entire horizontal space, irrespective of the width property</span>
+                    </div>
 
 
                 </div>
@@ -135,17 +146,21 @@
             for (var i = 0; i < displays.length; i++) {
                 if (displays[i].checked == true) {
                     demo.style.display = displays[i].value;
-                    demo.textContent = displays[i].value;
-
+                    spn1.textContent = displays[i].value;
+                    spn2.textContent = displays[i].value;
+                    demo2.style.display = displays[i].value;
                     if (displays[i].value === "inline") {
-
                         summary.innerHTML = 'When you set margin and padding, I will push other elements <b>horizontally</b> away, not vertically. I <b>ignore height and width</b> property.';
+                        summary2.innerHTML = 'I cannot hold <b>block</b> element inside <b>inline</b> element.';
                     } else if (displays[i].value === "inline-block") {
                         summary.innerHTML = 'When you set margin and padding, I will push other elements both <b>horizontally and vertically</b>. I <b>consider height and width</b> property. and adjust rest of the elements';
+                        summary2.innerHTML = 'I behave same like above case';
                     } else if (displays[i].value === "block") {
                         summary.innerHTML = 'I will take up the entire horizontal space, irrespective of the width property';
+                        summary2.innerHTML = 'I behave same like above case';
                     } else if (displays[i].value === "none") {
                         summary.innerHTML = 'I wont get rendered and I will be  removed from the page. But I am still in the DOM';
+                        summary2.innerHTML = 'I behave same like above case';
                     }
 
 
@@ -157,8 +172,12 @@
 
         function outputUpdate(val) {
             document.querySelector('#' + this.id + 'Output').value = val;
-            if (this.id === 'borderWidth') demo.style.borderStyle = 'solid';
+            if (this.id === 'borderWidth') {
+                demo.style.borderStyle = 'solid';
+                demo2.style.borderStyle = 'solid';
+            }
             demo.style[this.id] = val + 'px';
+            demo2.style[this.id] = val + 'px';
 
         }
     </script>

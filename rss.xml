@@ -3,7 +3,7 @@
     <channel>
         <title>Sanjay's Tutorial Feed</title>
         <link>http://sanjay1909.github.io/Tutorials/index.html</link>
-        <description>Learn,learn,learn by sharing, learn</description>
+        <description>Learn,learn,learn by sharing, continue learning</description>
 
         <item>
             <title>CSS - Position</title>
@@ -18,6 +18,13 @@
             <description>Sizing properties Explained with demo.</description>
             <category>CSS</category>
             <pubDate>22 May 2015</pubDate>
+        </item>
+        <item>
+            <title>CSS - Display</title>
+            <link>http://sanjay1909.github.io/Tutorials/CSS/display/index.html</link>
+            <description>Display properties Explained with demo.</description>
+            <category>CSS</category>
+            <pubDate>27 May 2015</pubDate>
         </item>
     </channel>
 </rss>
