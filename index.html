@@ -6,10 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <title>Tutorials</title>
     <link rel="alternate" type="application/rss+xml" href="http://sanjay1909.github.io/Tutorials/rss.xml" title="Learn - share - learn">
+    <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css" media="all" type="text/css" />
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css" media="all" type="text/css" />
     <link rel="stylesheet" href="tutorial.css" media="all" type="text/css" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 
-
+    <style>
+    </style>
 
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -19,46 +22,71 @@
 <body>
 
 
+    <nav class="navbar navbar-default navbar-fixed-top" style="background-color: #eee;">
 
-    <header>
-        <h1>My Understandings</h1>
-        <p class="view"><a href="https://github.com/sanjay1909/Tutorials">View the Project on GitHub <small>sanjay1909/Tutorials</small></a>
-        </p>
-        <ul>
-            <li><a href="https://github.com/sanjay1909/Tutorials/zipball/master">Download <strong>ZIP File</strong></a>
-            </li>
-            <li><a href="https://github.com/sanjay1909/Tutorials/tarball/master">Download <strong>TAR Ball</strong></a>
-            </li>
-            <li><a href="https://github.com/sanjay1909/Tutorials">View On <strong>GitHub</strong></a>
-            </li>
-        </ul>
+        <div class="container-fluid" style="margin-left:120px;margin-right:120px">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <h2 class="otto">Sanjay Tutorials</h2>
+            </div>
 
-
-    </header>
-
-    <section>
-        <h3>
-<a id="tutorials" class="anchor" href="#tutorials" aria-hidden="true"><span class="octicon octicon-link"></span></a>Tutorials.</h3>
-
-        <p>These Contents are based on my understandings:</p>
-        <ul>
-            <li><a href="/Tutorials/CSS/box/index.html" target="_blank">CSS - Box </a>
-            </li>
-            <li><a href="/Tutorials/CSS/display/index.html" target="_blank">CSS - Display </a>
-            </li>
-            <li><a href="/Tutorials/CSS/position/index.html" target="_blank">CSS - Position </a>
-            </li>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
 
+                <p class="navbar-text navbar-right"> <a href="https://github.com/sanjay1909/Tutorials/zipball/master" target="_blank" class="navbar-link"><i class="fa fa-download fa-2x "> </i></a>
+                </p>
+                <p class="navbar-text navbar-right"> <a href="https://github.com/sanjay1909/Tutorials" target="_blank" class="navbar-link"><i class="fa fa-github-square fa-2x "> </i></a>
+                </p>
+                <p class="navbar-text navbar-right"> <a href="http://sanjay1909.github.io/Tutorials/rss.xml" target="_blank" class="navbar-link"><i class="fa fa-rss-square fa-2x "> </i></a>
+                </p>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
 
-        </ul>
+
+    </nav>
+
+    <section style="margin-top:120px">
+        <div class="panel-heading">
+            <h3 class="panel-title">Contents</h3>
+        </div>
+        <div class="panel-body">
+            <ul>
+                <li><a href="/Tutorials/CSS/box/index.html" target="_blank">CSS - Box </a>
+                </li>
+                <li><a href="/Tutorials/CSS/display/index.html" target="_blank">CSS - Display </a>
+                </li>
+                <li><a href="/Tutorials/CSS/position/index.html" target="_blank">CSS - Position </a>
+                </li>
+            </ul>
+        </div>
     </section>
-    </div>
-    <footer>
-        <p>Project maintained by <a href="https://github.com/sanjay1909" target="_blank">Sanjay Krishna</a>
-        </p>
 
-    </footer>
+    <nav class="navbar navbar-default navbar-fixed-bottom" style="background-color: #eee;z-index: -1;">
+        <div class="container">
+            <p class="navbar-text navbar-left " style="margin-left:160px"> <a href="https://www.facebook.com/sanjay1909" target="_blank"><i class="fa fa-facebook fa-2x"></i></a>
+            </p>
+            <p class="navbar-text navbar-left "> <a href="https://plus.google.com/+SanjayKrishnaA" target="_blank"><i class="fa fa-google-plus fa-2x"></i></a>
+            </p>
+
+            <p class="navbar-text navbar-right" style="margin-right:120px">Project maintained by <a href="https://github.com/sanjay1909" target="_blank">Sanjay Krishna</a>
+            </p>
+
+        </div>
+    </nav>
+    <img class="img-circle" src="images/sanjay.png" style="position:fixed;bottom:0px;left:120px;width:80px;height:80px;border: 6px solid #eee;" />
+
+
+
+
     <!--[if !IE]><script>fixScale(document);</script><![endif]-->
 
 </body>
