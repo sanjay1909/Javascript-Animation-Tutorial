@@ -6,10 +6,18 @@ var HelloUser = React.createClass({
       username: '@sanjay1909'
     }
   },
+  handleChange: function(e){
+  // whenever setState is called, React creates a new virtual DOM, does the diff, then updates the real DOM.
+    this.setState({
+      username: e.target.value
+    });
+  },
   render: function(){
-    return (
+     return (
       <div>
-        Hello {this.state.username}
+        Hello {this.state.username} <br />
+        //onChange is a React thing and it will call whatever method you specify every time the value in the input box changes,
+        Change Name: <input type="text" value={this.state.username} onChange={this.handleChange} />
       </div>
     )
   }
