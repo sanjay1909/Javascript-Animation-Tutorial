@@ -1,10 +1,38 @@
-var HelloUser = React.createClass({
+//parent component
+var FriendsContainer = React.createClass({
+  getInitialState: function(){
+    return {
+      name: 'Sanjay',
+      friends: ['Krishna', 'Vignesh', 'Raj']
+    }
+  },
   render: function(){
     return (
-      <div> Hello, {this.props.name}</div>
+      <div>
+        <h3> Name: {this.state.name} </h3>
+        <ShowList names={this.state.friends} />
+      </div>
     )
   }
 });
 
-React.render(<HelloUser name="Sanjay"/>, document.getElementById('app'));
+//child component
+// props.names is got from UI attribute to Component
+var ShowList = React.createClass({
+  render: function(){
+    var listItems = this.props.names.map(function(friend){
+      return <li> {friend} </li>;
+    });
+    return (
+      <div>
+        <h3> Friends </h3>
+        <ul>
+          {listItems}
+        </ul>
+      </div>
+    )
+  }
+});
+
+React.render(<FriendsContainer/>, document.getElementById('app'));
 
