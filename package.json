@@ -1,0 +1,30 @@
+{
+  "name": "Sanjay-Tutorial",
+  "version": "1.0.0",
+  "description": "Giving back to community",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sanjay1909/Tutorials.git"
+  },
+  "keywords": [
+    "Sanjay",
+    "dom",
+    "css",
+    "javascript"
+  ],
+  "author": "Sanjay Krishna Anbalagan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sanjay1909/Tutorials/issues"
+  },
+  "homepage": "https://github.com/sanjay1909/Tutorials",
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-browserify": "^3.8.0",
+    "grunt-react": "^0.12.2"
+  }
+}
