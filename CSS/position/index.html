@@ -16,7 +16,6 @@
         }
 
         .spanClasss {
-            padding: 2px;
             border: 1px solid black;
             border-radius: 8px;
             background-color: gold;
@@ -74,43 +73,49 @@
                 <div class="static">
                     <div>
                         <h4>Inflow</h4>
-                        <input type="radio" name="position" value="static" onclick="positionHandler(spn)">Static</input>
+                        <input type="radio" name="position" value="static" onclick="positionHandler()">Static</input>
                         </br>
-                        <input type="radio" name="position" value="relative" onclick="positionHandler(spn)">Relative</input>
+                        <input type="radio" name="position" value="relative" onclick="positionHandler()">Relative</input>
                         </br>
                         <h4>Out of flow</h4>
-                        <input type="radio" name="position" value="absolute2" onclick="positionHandler(spn)">Absolute: Ancestor(Non-Static)</input>
+                        <input type="radio" name="position" value="absolute2" onclick="positionHandler()">Absolute: Ancestor(Non-Static)</input>
                         </br>
-                        <input type="radio" name="position" value="absolute" onclick="positionHandler(spn)">Absolute: Ancestor(Static)</input>
+                        <input type="radio" name="position" value="absolute" onclick="positionHandler()">Absolute: Ancestor(Static)</input>
                         </br>
-                        <input type="radio" name="position" value="fixed" onclick="positionHandler(spn)">Fixed</input>
+                        <input type="radio" name="position" value="fixed" onclick="positionHandler()">Fixed</input>
 
 
                     </div>
                 </div>
-                <div class="static" style="margin-top:20px">
-                    <div>
-                        <span style="display:inline-block;width:80px">1. Top: </span>
-                        <input type="range" min=0 max=300 value=0 id="rtop" oninput="outputUpdate.call(this,value,spn)"></input>
-                        <output for="rtop" id="rtopOutput"></output>
-                    </div>
-                    <div>
-                        <span style="display:inline-block;width:80px">2. Left: </span>
-                        <input type="range" min=0 max=200 value=0 id="rleft" oninput="outputUpdate.call(this,value,spn)"> </input>
-                        <output for="rleft" id="rleftOutput"></output>
-                    </div>
-                    <div>
-                        <span style=" display:inline-block;width:80px ">3. Bottom: </span>
-                        <input type="range" min=0 max=300 value=0 id="rbottom" oninput="outputUpdate.call(this,value,spn) "> </input>
-                        <output for="rbottom" id="rbottomOutput"></output>
-                    </div>
-                    <div>
-                        <span style="display:inline-block;width:80px ">4. Right: </span>
-                        <input type="range" min=0 max=200 value=0 id="rright" oninput="outputUpdate.call(this,value,spn) "> </input>
-                        <output for="rright" id="rrightOutput"></output>
-                    </div>
+                <div>
+                    <div class="static" style="margin-top:20px">
+                        <div>
+                            <span style="display:inline-block;width:80px">1. Top: </span>
+                            <input type="range" min=-100 max=100 value=0 id="rtop" oninput="topOutputUpdate.call(this,value)"></input>
+                            <output for="rtop" id="rtopOutput"></output>
+                        </div>
+                        <div>
+                            <span style="display:inline-block;width:80px">2. Left: </span>
+                            <input type="range" min=-100 max=100 value=0 id="rleft" oninput="leftOutputUpdate.call(this,value)"> </input>
+                            <output for="rleft" id="rleftOutput"></output>
+                        </div>
+                        <div>
+                            <span style=" display:inline-block;width:80px ">3. Bottom: </span>
+                            <input type="range" min=-100 max=100 value=0 id="rbottom" oninput="bottomOutputUpdate.call(this,value) "> </input>
+                            <output for="rbottom" id="rbottomOutput"></output>
+                        </div>
+                        <div>
+                            <span style="display:inline-block;width:80px ">4. Right: </span>
+                            <input type="range" min=-100 max=100 value=0 id="rright" oninput="rightOutputUpdate.call(this,value) "> </input>
+                            <output for="rright" id="rrightOutput"></output>
+                        </div>
 
+                    </div>
+                    <div>
+                        <input id="resetButton" type="button" value="Reset" onclick="resetAll()"></input>
+                    </div>
                 </div>
+
             </div>
             <div class="border" style="display: inline-block;width:28%;height:420px;overflow:hidden" id="grandParentContainer">
                 <div class="static border" style="margin:20px;padding:20px" id="parentContainer">
@@ -131,7 +136,7 @@
     <script type="application/javascript">
         var positionValue;
 
-        function positionHandler(respectiveSpan) {
+        function positionHandler() {
 
             var postions = document.getElementsByName("position");
             for (var i = 0; i < postions.length; i++) {
@@ -139,29 +144,26 @@
                     positionValue = postions[i].value;
                     if (postions[i].value !== "absolute2") {
                         document.getElementById('grandParentContainer').style.position = 'static';
-                        respectiveSpan.style.position = postions[i].value;
-                        console.log('display: ', respectiveSpan.style.display);
+                        spn.style.position = postions[i].value;
+                        console.log('display: ', spn.style.display);
                     } else {
 
                         document.getElementById('grandParentContainer').style.position = 'relative';
-                        respectiveSpan.style.position = 'absolute';
-                        respectiveSpan.innerHTML = 'Span: I am <big><b>Absolute</b></big> - positioned according to the ancestor - DIV (Postion: relative). My display will turn to block and my size if not specified, will occupy the entire space of the container I belong. my size is determined from top , bottom , left and right edges of my container. My orginal container height will turn zero, in this case box height = pading(20 + 20)px + margin(20 + 20)px + border(0) px + height(0)px = 80 px';
+                        spn.style.position = 'absolute';
+                        spn.innerHTML = 'Span: I am <big><b>Absolute</b></big> - positioned according to the ancestor - DIV (Postion: relative). My display will turn to block and my size if not specified, will occupy the entire space of the container I belong.My <b>display: </b> will turn into block. My <b>height:</b> <i>if top <b>and</b> Bottom</i> not specified, will take height from the contents inside. <i>else</i> calculated from top and bottom values from contianer edge.<b>Width:</b> <i>if left/right</i> not specified, entire container(DIV) width  as display is Block. <i>else</i> calculated from left and right values from contianer(DIV) edge. My orginal container height will turn zero, in this case box height = pading(20 + 20)px + margin(20 + 20)px + border(0) px + height(0)px = 80 px';
 
                     }
 
-                    if (positionValue === 'absolute' || positionValue === 'fixed')
-                        respectiveSpan.style.left = String(380 + Number(rleft.value)) + 'px';
-                    else
-                        respectiveSpan.style.left = rleft.value + 'px';
+                    /*if (positionValue === 'absolute' || positionValue === 'fixed') spn.style.left = String(380 + Number(rleft.value)) + 'px'; else spn.style.left = rleft.value + 'px';*/
 
                     if (postions[i].value === "static") {
-                        respectiveSpan.innerHTML = 'Span: I am <big><b>Static</b></big> - positioned according to the <u><i>normal flow</i></u> of the page. My default display - inline';
+                        spn.innerHTML = 'Span: I am <big><b>Static</b></big> - positioned according to the <u><i>normal flow</i></u> of the page. My default display - inline';
                     } else if (postions[i].value === "relative") {
-                        respectiveSpan.innerHTML = 'Span: I am <big><b>Realtive</b></big> - I am still part of normal flow of the page, but i can me moved form my original position. My display still stays as - inline';
+                        spn.innerHTML = 'Span: I am <big><b>Realtive</b></big> - I am still part of normal flow of the page, but i can me moved form my original position. My display still stays as - inline';
                     } else if (postions[i].value === "fixed") {
-                        respectiveSpan.innerHTML = 'Span: I am <big><b>Fixed</b></big> - I am not part of page flow anymore, i am fixed based on window position. My size is determined from top , bottom , left and right edges of my container. For better viewing experience, my left edge is set to 380px. My orginal container height will turn zero, in this case box height = pading(20 + 20)px + margin(20 + 20)px + border(0) px + height(0)px = 80 px';
+                        spn.innerHTML = 'Span: I am <big><b>Fixed</b></big> - I am not part of page flow anymore, i am fixed based on window position. My <b>height:</b> <i>if top <b>and</b> Bottom</i> not specified, will take height from the contents inside. <i>else</i> calculated from top and bottom values from window edge.<b>Width:</b> <i>if left/right</i> not specified, entire window width is considered, as display is Block. <i>else</i> calculated from left and bottom values from window edge. My orginal container height will turn zero, in this case box height = pading(20 + 20)px + margin(20 + 20)px + border(0) px + height(0)px = 80 px. For better viewing experience, my left edge is set to additional 380px.';
                     } else if (postions[i].value === "absolute") {
-                        respectiveSpan.innerHTML = 'Span: I am <big><b>Absolute</b></big> - positioned according to the ancestor. In this case my parent DIV and Grandparent DIV both are position:Static. SO i have to take my positon based on HTML block. My display will turn into block and my size if not specified, will occupy the entire space of the container(in this case HTML page) I belong. Or my size is determined from top , bottom , left and right edges of my container. For better viewing experience, my left edge is set to 380px. My orginal container height will turn zero, in this case box height = pading(20 + 20)px + margin(20 + 20)px + border(0) px + height(0)px = 80 px';
+                        spn.innerHTML = 'Span: I am <big><b>Absolute</b></big> - positioned according to the ancestor. In this case my parent DIV and Grandparent DIV both are of position:Static. So i have to take my positon based on HTML block. My <b>display: </b> will turn into block. My <b>height:</b> <i>if top/Bottom</i> not specified, will take height from the contents inside. <i>else</i> calculated from top and bottom values from contianer edge.<b>Width:</b> <i>if left/right</i> not specified, entire container(HTML Block) width  as display is Block. <i>else</i> calculated from left and bottom values from contianer(HTML Block) edge. My orginal container height will turn zero, in this case box height = pading(20 + 20)px + margin(20 + 20)px + border(0) px + height(0)px = 80 px.For better viewing experience, my left edge is set to additional 380px.';
                     }
 
 
@@ -171,24 +173,61 @@
 
         }
 
-        function outputUpdate(val, respectiveSpan) {
+        function outputUpdate(val) {
             document.querySelector('#' + this.id + 'Output').value = val;
 
-            //respectiveSpan.style.display = 'inline';
+            //spn.style.display = 'inline';
             // http://reference.sitepoint.com/css/displaypositionfloat
             //inline will turn to block - for absolute and fixed
-            respectiveSpan.style.top = rtop.value + 'px';
+            spn.style.top = rtop.value + 'px';
             if (positionValue === 'absolute' || positionValue === 'fixed')
-                respectiveSpan.style.left = String(380 + Number(rleft.value)) + 'px';
+                spn.style.left = String(380 + Number(rleft.value)) + 'px';
             else
-                respectiveSpan.style.left = rleft.value + 'px';
-            respectiveSpan.style.bottom = rbottom.value + 'px';
-            respectiveSpan.style.right = rright.value + 'px';
-            //respectiveSpan.style.height = '100px';
-            respectiveSpan.style.height = 'auto';
-            console.log('display: ', respectiveSpan.style.display);
-            console.log(respectiveSpan.style.position, respectiveSpan.style.left);
+                spn.style.left = rleft.value + 'px';
+            spn.style.bottom = rbottom.value + 'px';
+            spn.style.right = rright.value + 'px';
+            //spn.style.height = '100px';
+            spn.style.height = 'auto';
 
+        }
+
+        function leftOutputUpdate(val) {
+            document.querySelector('#' + this.id + 'Output').value = val;
+            spn.style.left = rleft.value + 'px';
+            if (positionValue === 'absolute' || positionValue === 'fixed')
+                spn.style.left = String(380 + Number(rleft.value)) + 'px';
+            else
+                spn.style.left = rleft.value + 'px';
+        }
+
+        function rightOutputUpdate(val) {
+            document.querySelector('#' + this.id + 'Output').value = val;
+            spn.style.right = rright.value + 'px';
+        }
+
+        function topOutputUpdate(val) {
+            document.querySelector('#' + this.id + 'Output').value = val;
+            spn.style.top = rtop.value + 'px';
+        }
+
+        function bottomOutputUpdate(val) {
+            document.querySelector('#' + this.id + 'Output').value = val;
+            spn.style.bottom = rbottom.value + 'px';
+        }
+
+        function resetAll() {
+            spn.style.left = 'auto';
+            spn.style.right = 'auto';
+            spn.style.top = 'auto';
+            spn.style.bottom = 'auto';
+            rleft.value = 0;
+            rright.value = 0;
+            rtop.value = 0;
+            rbottom.value = 0;
+            rleftOutput.value = '';
+            rrightOutput.value = '';
+            rtopOutput.value = '';
+            rbottomOutput.value = '';
         }
     </script>
 
