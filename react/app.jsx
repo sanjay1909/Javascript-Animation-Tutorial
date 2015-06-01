@@ -1,11 +1,18 @@
-//Every component is required to have a render method, render is essentially the template for our component.
-//React.render takes in 2 arguments.
-//The first argument is the component  to render,
-//the second argument is the DOM node where we want to render the component.
-var HelloWorld = React.createClass({
-             render: function () {
-                        return  < div > Hello World!< /div>
-                    }
-            });
+var HelloUser = React.createClass({
+//getInitialState method is “The way in which you set the state of a component”.
+// In other terms, getInitialState returns an object which contains the state or data for our component.
+  getInitialState: function(){
+    return {
+      username: '@sanjay1909'
+    }
+  },
+  render: function(){
+    return (
+      <div>
+        Hello {this.state.username}
+      </div>
+    )
+  }
+});
 
-            React.render( < HelloWorld/> , document.getElementById('app'));
+React.render(<HelloUser/> , document.getElementById('app'));
