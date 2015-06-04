@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html id="1">
+
+<head>
+    <title>Events - Mechanism</title>
+    <link rel="stylesheet" href="../tutorial.css" media="all" type="text/css" />
+    <link rel="stylesheet" href="../tree.css" media="all" type="text/css" />
+    <link rel="stylesheet" href="../callout.css" media="all" type="text/css" />
+    <style>
+        .border {
+            border: 1px solid gray;
+            border-radius: 6px;
+        }
+
+        .dotted-border {
+            border: 2px dashed gray;
+            margin: 6px;
+            border-radius: 6px;
+            background-color: white;
+        }
+    </style>
+
+</head>
+
+<body id="2">
+    <div id="fb-root"></div>
+    <script>
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.3&appId=752510261471542";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+
+    <header>
+        <h1>Event flow - Mechanism</h1>
+        <div style="position:relative; padding-bottom:10px;">
+            <div style="position:absolute; left:0px">
+
+                <div class="fb-like" data-href="http://sanjay1909.github.io/Tutorials/events" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
+
+            </div>
+            <div style="position:absolute; right:0px">
+                <div class="g-plusone" data-size="medium" data-href="http://sanjay1909.github.io/Tutorials/events/index.html"></div>
+                <div class="g-plus" data-action="share" data-annotation="bubble" data-href="http://sanjay1909.github.io/Tutorials/events/index.html"></div>
+            </div>
+        </div>
+
+    </header>
+    <section id="3">
+        <br/>
+        <div style="padding:6px;margin:4px;">Some of the Important properties to be considered in event flow are
+            <ul>
+                <li>Target (DOM element, where Event occured)</li>
+                <li>CurrentTarget DOM element, where eventlistener function is getting called)</li>
+                <li>Phase (Order in which event Listeners are executed)</li>
+
+                <ul>
+                    <li>Bubble-Phase (Second phase(default) - from leaf to root)</li>
+                    <li>Capture-Phase (First phase from root to leaf)</li>
+                </ul>
+
+            </ul>
+        </div>
+        <div id="4" class="dotted-border" style='height:120px; padding:40px'>
+            <div class="border" id="5" style='margin-top:20px;margin-bottom:auto;'>
+                <span>To trigger Event Flow:</span>
+                <input id="6" type="button" value="click me Once"></input>
+                </br>
+                </br>
+
+                <div style='display:inline-block'>
+                    <input id="captureCheckBox" type="checkbox">Capture Phase</input>
+                    </br>
+                    <input id="bubbleCheckBox" type="checkbox">Bubble Phase</input>
+                </div>
+                <div style='display:inline-block'>
+                    <span>Target: <span id="tar">null</span></span>
+                    </br>
+                    <span>Current Target: <span id="ct">null (as no Event-Listener attached)</span>
+                    </span>
+                </div>
+
+            </div>
+
+
+
+        </div>
+
+        <div class="hdiv" style="backgroundColor:white;" id="capture">
+            <p>DOM Tree: Capturing Phase</p>
+            <div class="tree">
+                <ul>
+                    <li>
+                        <a href="#" id="captureElm1">document</a>
+                        <ul>
+                            <li>
+                                <a href="#" id="captureElm2">body</a>
+                                <ul>
+                                    <li>
+                                        <a href="#">header</a>
+                                        <ul>
+                                            <li>
+                                                <a href="#">h1</a>
+                                            </li>
+                                            <li>
+                                                <a href="#">div</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="#" id="captureElm3">section</a>
+                                        <ul>
+                                            <li>
+                                                <a href="#" id="captureElm4">div (dashed)</a>
+                                                <ul>
+                                                    <li>
+                                                        <a href="#" id="captureElm5">div</a>
+                                                        <ul>
+                                                            <li>
+                                                                <a href="#">span</a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#" id="captureElm6">input (button)</a>
+                                                            </li>
+
+                                                        </ul>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </li>
+
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+        <div class="hdiv" style="backgroundColor:white;" id="bubble">
+            <p>DOM Tree: Bubbling Phase</p>
+            <div class="tree">
+                <ul>
+                    <li>
+                        <a href="#" id="bubbleElm1">document</a>
+                        <ul>
+                            <li>
+                                <a href="#" id="bubbleElm2">body</a>
+                                <ul>
+                                    <li>
+                                        <a href="#">header</a>
+                                        <ul>
+                                            <li>
+                                                <a href="#">div</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="#" id="bubbleElm3">section</a>
+                                        <ul>
+                                            <li>
+                                                <a href="#" id="bubbleElm4">div (dashed)</a>
+                                                <ul>
+                                                    <li>
+                                                        <a href="#" id="bubbleElm5">div</a>
+                                                        <ul>
+                                                            <li>
+                                                                <a href="#">span</a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#" id="bubbleElm6">input (button)</a>
+                                                            </li>
+
+                                                        </ul>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+
+        <div id="summary" class="bubble me" style="position: absolute;display:none">Hi</div>
+
+    </section>
+
+
+    <footer>
+        <div class="thank-you">
+            <div class="fb-comments" style="margin-left:auto;margin-right:auto" data-href="http://sanjay1909.github.io/Tutorials/events/mouse/index.html" data-numposts="5" data-colorscheme="light"></div>
+        </div>
+
+
+    </footer>
+
+
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-63657805-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+    <script>
+        function addEvent(el, event, handler, useCapture) {
+            if (!el) {
+                return;
+            }
+            if (el.attachEvent) {
+                el.attachEvent('on' + event, handler);
+            } else if (el.addEventListener) {
+                el.addEventListener(event, handler, useCapture);
+            } else {
+                el['on' + event] = handler;
+            }
+        }
+
+        function removeEvent(el, event, handler, useCapture) {
+            if (!el) {
+                return;
+            }
+            if (el.detachEvent) {
+                el.detachEvent('on' + event, handler);
+            } else if (el.removeEventListener) {
+                el.removeEventListener(event, handler, useCapture);
+            } else {
+                el['on' + event] = null;
+            }
+        }
+
+
+
+        function updateTraceUI(currentTarget, target, phase, reset) {
+            var ele = document.getElementById(phase + String(currentTarget.id));
+            ele.style.color = "000";
+            var curColor = "#c8e4f8";
+            if (currentTarget.id === '4') {
+                //yellow
+                curColor = "#ffff93";
+                ct.textContent = 'Div in Yellow Color'
+            } else if (currentTarget.id === '5') {
+                //green
+                curColor = "#c8f8d3";
+                ct.textContent = 'Div in Green Color'
+            } else if (currentTarget.id === '6') {
+                //pink
+                curColor = "#f8c8de";
+                ct.textContent = 'Div in Pink Color'
+            } else {
+                curColor = "#c8e4f8";
+                ct.textContent = 'null (as No event-listener attached)'
+            }
+            //if (target.id === '1') tar.textContent =
+            ele.style.backgroundColor = curColor;
+            summary.style.display = 'none';
+        }
+
+        function startCaptureTrace(e) {
+            var timeFactor = Number(e.target.id);
+            console.log('CT: ', timeFactor);
+            setTimeout(function () {
+                updateTraceUI(arguments[0], arguments[1], 'captureElm', false);
+            }.bind(e, e.currentTarget, e.target), 4000 * Number(e.currentTarget.id));
+        }
+
+
+
+        function startBubbleTrace(e) {
+            var timeFactor = Number(e.target.id);
+            console.log('BT: ', timeFactor);
+            setTimeout(function () {
+                updateTraceUI(arguments[0], arguments[1], 'bubbleElm', false);
+            }.bind(e, e.currentTarget, e.target), 4000 * (timeFactor + (timeFactor + 1) - Number(e.currentTarget.id)));
+        }
+
+
+        function updateElementUI(currentTarget, target, phase) {
+            eventState = eventState + 1;
+            summary.style.display = 'block';
+            summary.innerHTML = '<u>' + phase + ' Phase:</u> </br>I am executing event-listener for this DOM element </br> by turning their background to <b>yellow </b>.';
+            var top = currentTarget.offsetTop;
+            var left = currentTarget.offsetLeft + 20;
+            var curColor = 'white';
+            var colorName = 'white';
+            if (currentTarget.id === '4') {
+                //yellow
+                curColor = "#ffff93";
+                colorName = 'yellow';
+                top = top + 160;
+                left = left + 220;
+            } else if (currentTarget.id === '5') {
+                //green
+                curColor = "#c8f8d3";
+                colorName = 'green';
+                top = top + 20;
+                left = left + 240;
+            } else if (currentTarget.id === '6') {
+                //pink
+                curColor = "#f8c8de";
+                colorName = 'pink';
+                top = top - 10;
+                left = left + 40;
+            }
+            currentTarget.style.backgroundColor = curColor;
+            summary.innerHTML = '<u>' + phase + ' Phase:</u> </br>I am executing event-listener for this DOM element </br> by turning their background to <b>' + colorName + '</b>.';
+
+            summary.style.top = top + 'px';
+            summary.style.left = left + 'px';
+        }
+
+        var eventState = 0;
+
+        function startCaptureTimer(e) {
+            var timeFactor = Number(e.target.id);
+            console.log('CTi: ', timeFactor);
+            setTimeout(function () {
+                updateElementUI(arguments[0], arguments[1], 'Capture');
+            }.bind(e, e.currentTarget), 4000 * Number(e.currentTarget.id));
+        }
+
+        function startBubbleTimer(e) {
+            var timeFactor = Number(e.target.id);
+            console.log('BTi: ', timeFactor);
+            setTimeout(function () {
+                updateElementUI(arguments[0], arguments[1], 'Bubble');
+            }.bind(e, e.currentTarget, e.target), 4000 * (timeFactor + (timeFactor + 1) - Number(e.currentTarget.id)));
+        }
+
+        for (var i = 1; i <= 6; i++) {
+            var ele = document.getElementById(String(i));
+            addEvent(ele, 'click', startBubbleTrace, false);
+            addEvent(ele, 'click', startCaptureTrace, true);
+        }
+
+        for (var i = 6; i > 3; i--) {
+            var ele = document.getElementById(String(i));
+            addEvent(ele, 'click', startBubbleTimer, false);
+            addEvent(ele, 'click', startCaptureTimer, true);
+        }
+
+        function resetAll() {
+            for (var i = 1; i <= 6; i++) {
+                var ele = document.getElementById(String(i));
+                updateTraceUI(ele, null, 'captureElm', true);
+                updateTraceUI(ele, null, 'bubbleElm', true);
+            }
+            for (var i = 1; i < 4; i++) {
+                var ele = document.getElementById(String(i));
+                addEvent(ele, 'click', startBubbleTimer, false);
+                addEvent(ele, 'click', startCaptureTimer, true);
+            }
+        }
+    </script>
+
+
+</body>
+
+</html>

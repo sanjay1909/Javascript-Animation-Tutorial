@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Events - mouse</title>
+    <link rel="stylesheet" href="../../tutorial.css" media="all" type="text/css" />
+    <style>
+        .dotted-box {
+            border: 1px dotted gray;
+        }
+
+        .solid-box {
+            border: 25px solid gray;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="fb-root"></div>
+    <script>
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.3&appId=752510261471542";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+
+    <header>
+        <h1>Events - Mouse</h1>
+        <div style="position:relative; padding-bottom:10px;">
+            <div style="position:absolute; left:0px">
+
+                <div class="fb-like" data-href="http://sanjay1909.github.io/Tutorials/events/mouse" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
+
+            </div>
+            <div style="position:absolute; right:0px">
+                <div class="g-plusone" data-size="medium" data-href="http://sanjay1909.github.io/Tutorials/events/mouse/index.html"></div>
+                <div class="g-plus" data-action="share" data-annotation="bubble" data-href="http://sanjay1909.github.io/Tutorials/events/mouse/index.html"></div>
+            </div>
+        </div>
+
+    </header>
+    <section>
+        <p>In order to set the width and height of an element correctly in all browsers, we need to know how the box model works. Total size of the element to render on the screen is calculated based on below mentioned 4 CSS properties</p>
+
+
+
+        <div style="position:relative;width:750px;height:250px;margin-right:auto;margin-left:auto;">
+            <div style="position:absolute;top:80px;left:0px">
+                <div>
+                    <span style="display:inline-block;width:90px">1. Margin: </span>
+                    <input type="range" min=0 max=25 value=0 id="margin" oninput="outputUpdate.call(this,value)"></input>
+                    <output for="margin" id="marginOutput"></output>
+                </div>
+                <div>
+                    <span style="display:inline-block;width:90px">2. Border: </span>
+                    <input type="range" min=0 max=25 value=0 id="borderWidth" oninput="outputUpdate.call(this,value)"> </input>
+                    <output for="borderWidth" id="borderWidthOutput"></output>
+                </div>
+                <div>
+                    <span style="display:inline-block;width:90px">3. Padding: </span>
+                    <input type="range" min=0 max=25 value=0 id="padding" oninput="outputUpdate.call(this,value)"> </input>
+                    <output for="padding" id="paddingOutput"></output>
+                </div>
+                <div>
+                    <span style="display:inline-block;width:90px">4. Width: </span>
+                    <input type="range" min=0 max=300 value=300 id="width" oninput="outputUpdate.call(this,value)"> </input>
+                    <output for="width" id="widthOutput"></output>
+                </div>
+            </div>
+            <div style="position:absolute;top:40px;left:300px;">
+                <div class="dotted-box">
+
+                    <div id="demo" style="background-color:gold;">CSS Box Model </div>
+                </div>
+            </div>
+            <p style="margin-right:auto;margin-left:auto;"><u>Total Width:</u> Margin <strong><big><span id="marginID"></span></big></strong>px + border <strong><big><span id="borderID"></span></big></strong>px + Padding <strong><big><span id="padID"></span></big></strong>px + width(content) <strong><big><span id="widthID"></span></big></strong>px = <strong><big><span id="total"></span></big></strong>px.
+            </p>
+
+        </div>
+
+        <br/>
+        <br/>
+
+    </section>
+
+
+    <footer>
+        <div class="thank-you">
+            <div class="fb-comments" style="margin-left:auto;margin-right:auto" data-href="http://sanjay1909.github.io/Tutorials/events/mouse/index.html" data-numposts="5" data-colorscheme="light"></div>
+        </div>
+
+
+    </footer>
+
+    <script>
+        function outputUpdate(val) {
+            document.querySelector('#' + this.id + 'Output').value = val;
+            if (this.id === 'borderWidth') demo.style.borderStyle = 'solid';
+            demo.style[this.id] = val + 'px';
+            borderID.textContent = borderWidth.value;
+            marginID.textContent = margin.value;
+            padID.textContent = padding.value;
+            widthID.textContent = width.value;
+            total.textContent = (2 * borderWidth.value + 2 * margin.value + 2 * padding.value) + Number(width.value);
+        }
+        widthOutput.value = 300;
+        demo.style['width'] = '300px';
+    </script>
+
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-63657805-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+</body>
+
+</html>
