@@ -26,5 +26,12 @@
             <category>CSS</category>
             <pubDate>27 May 2015</pubDate>
         </item>
+        <item>
+            <title>Event - Event Flow</title>
+            <link>http://sanjay1909.github.io/Tutorials/events/index.html</link>
+            <description>Display properties Explained with demo.</description>
+            <category>Event</category>
+            <pubDate>4 June 2015</pubDate>
+        </item>
     </channel>
 </rss>
