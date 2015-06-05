@@ -56,25 +56,23 @@
         <div style="padding:6px;margin:4px;">Some of the Important properties to be considered in event flow are
             <ul>
                 <li>Target (DOM element, where Event occured)</li>
-                <li>CurrentTarget DOM element, where eventlistener function is getting called)</li>
+                <li>CurrentTarget (DOM element, where eventlistener function is getting called)</li>
+                <li>stopPropogation() (Stopping event-flow in runniing bubbling phase)</li>
                 <li>Phase (Order in which event Listeners are executed)</li>
 
                 <ul>
-                    <li>Bubble-Phase (Second phase(default) - from leaf to root)</li>
-                    <li>Capture-Phase (First phase from root to leaf)</li>
+                    <li>Bubble-Phase (Second phase(default) - from child to parent)</li>
+                    <li>Capture-Phase (First phase from parent to child)</li>
                 </ul>
 
             </ul>
+            <u>In the below example:</u> </br>1. Click inside the dotted square, event flow searches until target is captured and then reverse back in the same direction to root in bubbling phase. </br>2. Select Stop Propogation check-box to ignore the bubbling phase.</br>3. Select the check box to attach listners either in capturing or Bubbling or both phase.
         </div>
         </br>
         </br>
-        <div style='text-align:center'>
-            <div id="4" class="hdiv dotted-border" style='height:80px; padding:40px;overflow:hidden'>
-                <div class="border" id="5" style='height:100%;margin:auto;text-align:center'>
-                    <input id="6" type="button" value="Button" style="display:block; margin:0 100px;position:relative;top:45%"></input>
-                </div>
-            </div>
-            <div class='hdiv border' style='height:80px;padding:40px;overflow:hidden;text-align:left'>
+        <div>
+            <div class='hdiv border' style='height:120px;width:220px;padding:20px;overflow:hidden;text-align:left'>
+                Attach Event-Listners at:
                 <div>
                     <input id="captureCheckBox" type="checkbox">Capture Phase</input>
                     </br>
@@ -87,10 +85,17 @@
                     <span><b>Current Target</b>: <span id="ct">null</span>
                     </span>
                 </div>
+                </br>
+                <input id="propogationCheckBox" type="checkbox">Stop Propogation</input>
+            </div>
+            <div id="4" class="hdiv dotted-border" style='height:80px; padding:40px;overflow:hidden'>
+                <div class="border" id="5" style='height:100%;margin:auto;text-align:center'>
+                    <input id="6" type="button" value="Button" style="display:block; margin:0 100px;position:relative;top:45%"></input>
+                </div>
             </div>
         </div>
 
-        <div style="text-align:center;margin:20px">
+        <div style="margin:20px">
             <div class="border" style="display:inline-block">
                 <div class="hdiv" style="backgroundColor:white;display:inline-block;" id="capture">
                     <p>DOM Tree: Capturing Phase</p>
@@ -412,6 +417,8 @@
                 }.bind(e, e.currentTarget, e.target), captureListenerTime);
                 captureListenerTime = captureListenerTime - listenerDelta;
             }
+
+            if (propogationCheckBox.checked) return;
 
             if (bubbleCheckBox.checked) {
                 setTimeout(function () {
