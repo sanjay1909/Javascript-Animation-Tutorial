@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>ReactJS - Data Flow</title>
+    <link rel="stylesheet" href="../../highlight/styles/sunburst.css" media="all" type="text/css" />
+    <style>
+        body {
+            background-color: #d0cdcd;
+            margin-left: 120px;
+            margin-right: 120px;
+        }
+
+        .normal,
+        .react,
+        .elem {
+            width: 44%;
+            display: inline-block;
+            border: solid #999b9b 1px;
+            background-color: white;
+            border-radius: 4px;
+            margin: 4px;
+            padding-left: 12px;
+            padding-right: 12px;
+        }
+
+        .elem {
+            border: solid #71c9f7 3px;
+            position: relative;
+            margin: 3px;
+        }
+
+        #normalDiv,
+        #reactDiv {
+            padding: 8px;
+        }
+
+        .label,
+        .endlabel {
+            position: absolute;
+            background-color: #71c9f7;
+            color: #414142;
+            line-height: 1em;
+        }
+
+        .label {
+            top: 0;
+            left: 0;
+            padding: 0 3px 3px 0;
+        }
+
+        .endlabel {
+            right: 0;
+            bottom: 0;
+            padding: 3px 0 0 3px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="demo">
+
+        <div class="elem">
+            <span class="label">&lt;div id="normalDIV"></span>
+            <div id="normalDiv">
+                <div className="filter-list">
+                    <br></br>
+                    <input type="text" placeholder="Search" onkeyup="filterList(event)" />
+                    <ul id="list">
+                        <li id="Apples">Apples</li>
+                        <li id="Broccoli">Broccoli</li>
+                        <li id="Chicken">Chicken</li>
+                        <li id="Duck">Duck</li>
+                        <li id="Eggs">Eggs</li>
+                        <li id="Fish">Fish</li>
+                        <li id="Granola">Granola</li>
+                        <li id="Cereal">cereal</li>
+                    </ul>
+                </div>
+            </div>
+            <span class="endlabel">&lt;/div></span>
+        </div>
+
+        <div class="elem">
+            <span class="label">&lt;div id="reactDIV"></span>
+            <div id="reactDiv"></div>
+            <span class="endlabel">&lt;/div></span>
+        </div>
+
+    </div>
+    <div class="steps">
+        <div class="normal">
+            <h3>Steps</h3>
+            <ol>
+                <li>Create a counter variable </li>
+                <li>Create a function which increases the counter value and updates in UI</li>
+                <li>Add a button tag and on its - onClick eventListener call the above created function</li>
+            </ol>
+        </div>
+        <div class="react">
+            <h3>Steps</h3>
+            <ol>
+                <li>Create a property of State object say count</li>
+                <li>Add count as Children to h1 using React.CreateElement</li>
+                <li>Create a function which increases the counter value and updates the count property</li>
+            </ol>
+        </div>
+    </div>
+    <div class="notes">
+        <div class="normal">
+            <h3>Note</h3>
+            <ol>
+                <li>UI id is reuired to update (UI Based)</li>
+            </ol>
+        </div>
+        <div class="react">
+            <h3>Note</h3>
+            <ol>
+                <li>state object property is necesaary to update.(Data Based)</li>
+            </ol>
+        </div>
+    </div>
+    <div class="code">
+        <div class="normal">
+            <pre>
+                <code class="html">
+&lt;div className="filter-list">
+    &lt;br>&lt;/br>
+    &lt;input type="text" placeholder="Search" onkeyup="filterList(event)" />
+    &lt;ul id="list">
+        &lt;li id="Apples">Apples&lt;/li>
+        &lt;li id="Broccoli">Broccoli&lt;/li>
+        &lt;li id="Chicken">Chicken&lt;/li>
+        &lt;li id="Duck">Duck&lt;/li>
+        &lt;li id="Eggs">Eggs&lt;/li>
+        &lt;li id="Fish">Fish&lt;/li>
+        &lt;li id="Granola">Granola&lt;/li>
+        &lt;li id="Cereal">cereal&lt;/li>
+    &lt;/ul>
+&lt;/div>
+&lt;script type="text/javascript">
+    var initialItems = [
+     "Apples",
+     "Broccoli",
+     "Chicken",
+     "Duck",
+     "Eggs",
+     "Fish",
+     "Granola",
+     "Cereal"
+   ];
+    var items = [];
+
+    function filterList(event) {
+        var updatedList = initialItems;
+        updatedList = updatedList.filter(function (item) {
+            return item.toLowerCase().search(
+                event.target.value.toLowerCase()) !== -1;
+        });
+        items = updatedList
+        for (var i = 0; i &lt; initialItems.length; i++) {
+            if (document.getElementById(initialItems[i]))
+                list.removeChild(document.getElementById(initialItems[i]));
+        }
+
+        for (var i = 0; i &lt; items.length; i++) {
+            var entry = document.createElement('li');
+            entry.appendChild(document.createTextNode(items[i]));
+            entry.setAttribute('id', items[i]);
+            list.appendChild(entry);
+        }
+    }
+&lt;/script>
+                </code>
+            </pre>
+        </div>
+        <div class="react">
+            <pre>
+            <code class="javascript">
+var FilteredList = React.createClass({
+  filterList: function(event){
+    var updatedList = this.state.initialItems;
+    updatedList = updatedList.filter(function(item){
+      return item.toLowerCase().search(
+        event.target.value.toLowerCase()) !== -1;
+    });
+    this.setState({items: updatedList});
+  },
+  getInitialState: function(){
+     return {
+       initialItems: [
+         "Apples",
+         "Broccoli",
+         "Chicken",
+         "Duck",
+         "Eggs",
+         "Fish",
+         "Granola",
+         "Cereal"
+       ],
+       items: []
+     }
+  },
+  componentWillMount: function(){
+    this.setState({items: this.state.initialItems})
+  },
+  render: function(){
+    return (
+      &lt;div className="filter-list">
+      &lt;br>&lt;/br>
+        &lt;input type="text" placeholder="Search" onChange={this.filterList}/>
+      &lt;List items={this.state.items}/>
+      &lt;/div>
+    );
+  }
+});
+
+var List = React.createClass({
+  render: function(){
+    return (
+      &lt;ul>
+      {
+        this.props.items.map(function(item) {
+          return &lt;li key={item}>{item}&lt;/li>
+        })
+       }
+      &lt;/ul>
+    )
+  }
+});
+
+React.render(&lt;FilteredList/>, document.getElementById('reactDiv'));
+            </code>
+            </pre>
+        </div>
+    </div>
+
+
+
+    <script type="text/javascript" src="../../bower_components/react/react.js"></script>
+    <script type="text/javascript" src="../../bower_components/react/JSXTransformer.js"></script>
+    <script type="text/javascript" src="app.js"></script>
+    <script src="../../highlight/highlight.pack.js"></script>
+    <script>
+        hljs.initHighlightingOnLoad();
+    </script>
+    <script type="text/javascript">
+        var initialItems = [
+         "Apples",
+         "Broccoli",
+         "Chicken",
+         "Duck",
+         "Eggs",
+         "Fish",
+         "Granola",
+         "Cereal"
+       ];
+        var items = [];
+
+        function filterList(event) {
+            var updatedList = initialItems;
+            updatedList = updatedList.filter(function (item) {
+                return item.toLowerCase().search(
+                    event.target.value.toLowerCase()) !== -1;
+            });
+            items = updatedList
+            for (var i = 0; i < initialItems.length; i++) {
+                if (document.getElementById(initialItems[i]))
+                    list.removeChild(document.getElementById(initialItems[i]));
+            }
+
+            for (var i = 0; i < items.length; i++) {
+                var entry = document.createElement('li');
+                entry.appendChild(document.createTextNode(items[i]));
+                entry.setAttribute('id', items[i]);
+                list.appendChild(entry);
+            }
+        }
+    </script>
+</body>
+
+
+
+</html>

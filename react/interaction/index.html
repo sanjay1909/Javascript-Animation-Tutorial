@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>ReactJS - Events</title>
+    <link rel="stylesheet" href="../../highlight/styles/sunburst.css" media="all" type="text/css" />
+    <style>
+        body {
+            background-color: #d0cdcd;
+            margin-left: 120px;
+            margin-right: 120px;
+        }
+
+        .normal,
+        .react,
+        .elem {
+            width: 44%;
+            display: inline-block;
+            border: solid #999b9b 1px;
+            background-color: white;
+            border-radius: 4px;
+            margin: 4px;
+            padding-left: 12px;
+            padding-right: 12px;
+        }
+
+        .elem {
+            border: solid #71c9f7 3px;
+            position: relative;
+            margin: 3px;
+        }
+
+        .label,
+        .endlabel {
+            position: absolute;
+            background-color: #71c9f7;
+            color: #414142;
+            line-height: 1em;
+        }
+
+        .label {
+            top: 0;
+            left: 0;
+            padding: 0 3px 3px 0;
+        }
+
+        .endlabel {
+            right: 0;
+            bottom: 0;
+            padding: 3px 0 0 3px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="demo">
+
+        <div class="elem">
+            <span class="label">&lt;div id="normalDIV"></span>
+            <div id="normalDiv">
+                <h2>Count:<span id="normalH2"></span></h2>
+                <button type="button" onClick="incrementCount()">Increment</button>
+            </div>
+            <span class="endlabel">&lt;/div></span>
+        </div>
+
+        <div class="elem">
+            <span class="label">&lt;div id="reactDIV"></span>
+            <div id="reactDiv"></div>
+            <span class="endlabel">&lt;/div></span>
+        </div>
+
+    </div>
+    <div class="steps">
+        <div class="normal">
+            <h3>Steps</h3>
+            <ol>
+                <li>Create a counter variable </li>
+                <li>Create a function which increases the counter value and updates in UI</li>
+                <li>Add a button tag and on its - onClick eventListener call the above created function</li>
+            </ol>
+        </div>
+        <div class="react">
+            <h3>Steps</h3>
+            <ol>
+                <li>Create a property of State object say count</li>
+                <li>Add count as Children to h1 using React.CreateElement</li>
+                <li>Create a function which increases the counter value and updates the count property</li>
+            </ol>
+        </div>
+    </div>
+    <div class="notes">
+        <div class="normal">
+            <h3>Note</h3>
+            <ol>
+                <li>UI id is reuired to update (UI Based)</li>
+            </ol>
+        </div>
+        <div class="react">
+            <h3>Note</h3>
+            <ol>
+                <li>state object property is necesaary to update.(Data Based)</li>
+            </ol>
+        </div>
+    </div>
+    <div class="code">
+        <div class="normal">
+            <pre>
+                <code class="html">
+&lt;h2>Count:&lt;span id="normalH2">&lt;/span>&lt;/h2>
+&lt;button type="button" onClick="incrementCount()">Increment&lt;/button>
+
+&lt;script type="text/javascript">
+        var counter = 0;
+
+        function incrementCount() {
+            counter = counter + 1;
+            normalH1.textContent = counter;
+        }
+&lt;/script>
+                </code>
+            </pre>
+        </div>
+        <div class="react">
+            <pre>
+            <code class="javascript">
+var Counter = React.createClass({
+  incrementCount: function(){
+    this.setState({
+      count: this.state.count + 1
+    });
+  },
+  getInitialState: function(){
+     return {
+       count: 0
+     }
+  },
+  render: function(){
+    return (
+      &lt;div class="my-component">
+        &lt;h2>Count: {this.state.count}&lt;/h2>
+        &lt;button type="button" onClick={this.incrementCount}>Increment&lt;/button>
+      &lt;/div>
+    );
+  }
+});
+
+React.render(&lt;Counter/>, document.getElementById('reactDiv'));
+            </code>
+            </pre>
+        </div>
+    </div>
+
+
+
+    <script type="text/javascript" src="../../bower_components/react/react.js"></script>
+    <script type="text/javascript" src="../../bower_components/react/JSXTransformer.js"></script>
+    <script type="text/javascript" src="app.js"></script>
+    <script src="../../highlight/highlight.pack.js"></script>
+    <script>
+        hljs.initHighlightingOnLoad();
+    </script>
+    <script type="text/javascript">
+        var counter = 0;
+
+        function incrementCount() {
+            counter = counter + 1;
+            normalH2.textContent = counter;
+        }
+    </script>
+</body>
+
+
+
+</html>

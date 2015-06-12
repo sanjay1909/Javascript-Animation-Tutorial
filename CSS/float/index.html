@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>CSS Float</title>
+    <link rel="stylesheet" href="../../tutorial.css" media="all" type="text/css" />
+    <style>
+        .dotted-box {
+            border: 1px dotted gray;
+        }
+
+        .solid-box {
+            border: 25px solid gray;
+        }
+
+        .border {
+            border: 1px solid gray;
+            border-radius: 6px;
+        }
+
+        .dotted-border {
+            border: 2px dashed gray;
+            border-radius: 6px;
+            background-color: white;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="fb-root"></div>
+    <script>
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.3&appId=752510261471542";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+
+    <header>
+        <h1>CSS - Float</h1>
+        <div style="position:relative; padding-bottom:10px;">
+            <div style="position:absolute; left:0px">
+
+                <div class="fb-like" data-href="http://sanjay1909.github.io/Tutorials/float/box" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
+
+            </div>
+            <div style="position:absolute; right:0px">
+                <div class="g-plusone" data-size="medium" data-href="http://sanjay1909.github.io/Tutorials/CSS/float/index.html"></div>
+                <div class="g-plus" data-action="share" data-annotation="bubble" data-href="http://sanjay1909.github.io/Tutorials/CSS/float/index.html"></div>
+            </div>
+        </div>
+
+    </header>
+    <section>
+        <div style="display:inline-block">
+            <input type="checkbox"> Div-1: Float</input>
+            </br>
+            <input type="checkbox"> Div-2: Float</input>
+            </br>
+            <input type="checkbox"> Div-3: Float</input>
+            </br>
+        </div>
+        <div style="display:inline-block">
+            <div id="div1" class="border" style=" padding: 4px;margin: 4px">
+                <p style=" padding: 4px;margin: 4px">Div - 1</p>
+            </div>
+            <div id="div2" class="border" style=" padding: 4px;margin: 4px">
+                <p style=" padding: 4px;margin: 4px">Div - 2</p>
+            </div>
+            <div id="div3" class="border" style=" padding: 4px;margin: 4px">
+                <p c style=" padding: 4px;margin: 4px">Div - 3</p>
+            </div>
+        </div>
+
+
+    </section>
+
+
+    <footer>
+        <div class="thank-you">
+            <div class="fb-comments" style="margin-left:auto;margin-right:auto" data-href="http://sanjay1909.github.io/Tutorials/CSS/float/index.html" data-numposts="5" data-colorscheme="light"></div>
+        </div>
+
+
+    </footer>
+
+
+
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-63657805-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+</body>
+
+</html>
