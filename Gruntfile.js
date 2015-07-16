@@ -11,7 +11,7 @@ module.exports = function (grunt) {
         react: {
             single_file_output: {
                 files: {
-                    'react/dataFlow/app.js': 'react/dataFlow/app.jsx'
+                    'react/EEM/app.js': 'react/EEM/app.jsx'
                 }
             },
 
@@ -19,9 +19,9 @@ module.exports = function (grunt) {
                 files: [
                     {
                         expand: true,
-                        cwd: 'react/dataFlow',
+                        cwd: 'react/EEM',
                         src: ['**/*.jsx'],
-                        dest: 'react/dataFlow',
+                        dest: 'react/EEM',
                         ext: '.js'
         }
       ]

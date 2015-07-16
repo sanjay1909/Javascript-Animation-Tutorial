@@ -53,3 +53,4 @@ var List = React.createClass({
 });
 
 React.render(<FilteredList/>, document.getElementById('reactDiv'));
+React.render(<FilteredList/>, document.getElementById('reactDiv2'));
