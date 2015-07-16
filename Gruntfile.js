@@ -11,7 +11,7 @@ module.exports = function (grunt) {
         react: {
             single_file_output: {
                 files: {
-                    'react/EEM/app.js': 'react/EEM/app.jsx'
+                    'react/EEM/app.js': 'react/ownership/app.jsx'
                 }
             },
 
@@ -19,9 +19,9 @@ module.exports = function (grunt) {
                 files: [
                     {
                         expand: true,
-                        cwd: 'react/EEM',
+                        cwd: 'react/ownership',
                         src: ['**/*.jsx'],
-                        dest: 'react/EEM',
+                        dest: 'react/ownership',
                         ext: '.js'
         }
       ]

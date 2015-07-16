@@ -18,6 +18,7 @@
     "bootstrap": "~3.3.4",
     "react": "~0.13.3",
     "underscore": "~1.8.3",
-    "WeaveCoreJS": "https://github.com/sanjay1909/WeaveCoreJS.git"
+    "WeaveCoreJS": "https://github.com/sanjay1909/WeaveCoreJS.git",
+    "tinymce": "~4.2.1"
   }
 }
