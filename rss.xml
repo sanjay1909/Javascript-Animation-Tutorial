@@ -33,5 +33,26 @@
             <category>Event</category>
             <pubDate>4 June 2015</pubDate>
         </item>
+        <item>
+            <title>ReactJS - Basics</title>
+            <link>http://sanjay1909.github.io/Tutorials/react/basic/index.html</link>
+            <description>React explained in comparison with Basic HTML</description>
+            <category>ReactJS</category>
+            <pubDate>15 June 2015</pubDate>
+        </item>
+        <item>
+            <title>ReactJS - Event</title>
+            <link>http://sanjay1909.github.io/Tutorials/react/interaction/index.html</link>
+            <description>React interaction explained in comparison with Basic HTML</description>
+            <category>ReactJS</category>
+            <pubDate>15 June 2015</pubDate>
+        </item>
+        <item>
+            <title>ReactJS - DataFlow</title>
+            <link>http://sanjay1909.github.io/Tutorials/react/dataFlowe/index.html</link>
+            <description>React data management explained in comparison with Basic HTML</description>
+            <category>ReactJS</category>
+            <pubDate>15 June 2015</pubDate>
+        </item>
     </channel>
 </rss>
