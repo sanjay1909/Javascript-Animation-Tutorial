@@ -54,5 +54,12 @@
             <category>ReactJS</category>
             <pubDate>15 June 2015</pubDate>
         </item>
+        <item>
+            <title>ReactJS - Gulp - workflow</title>
+            <link>http://sanjay1909.github.io/Tutorials/react/workflow/dist/index.html</link>
+            <description>React - Gulp Task</description>
+            <category>ReactJS</category>
+            <pubDate>20 July 2015</pubDate>
+        </item>
     </channel>
 </rss>
