@@ -1,0 +1,119 @@
+{
+    "items": [
+
+        {
+            "heading": "Provide reference for Path",
+            "instruction": "Before we dive into building our different Gulp tasks, we first need to create a paths object. This paths object is going to be filled with properties that represent differents paths",
+            "code": {
+                "language": "language-javascript",
+                "content": "var path = {\nHTML: 'src/index.html',\nALL: ['src/js/*.js', 'src/js/**/*.js', 'src/index.html'],\nJSX: ['src/jsx/*.jsx', 'src/jsx/**/*.jsx'],\nMINIFIED_OUT: 'build.min.js',\nDEST_SRC: 'dist/src',\nDEST_BUILD: 'dist/build',\nDEST: 'dist'\n };"
+
+            },
+            "items": []
+
+        },
+        {
+            "heading": "Gulp Tasks for Development",
+            "instruction": "",
+            "code": null,
+            "items": [
+                {
+                    "heading": "JSX -> JS (Transform)",
+                    "instruction": "Our first task is going to be called transform and it’s going to be what transforms our JSX into JS. We create a gulp task called transform and pass it a callback function. In our callback function we grab the path.JSX array. Gulp then gets each one of those files, transforms them using the react method we initialized earlier then pipes that outcome to dist/src.",
+                    "code": {
+                        "language": "language-javascript",
+                        "content": "gulp.task('transform', function(){\ngulp.src(path.JS)\n.pipe(react())\n.pipe(gulp.dest(path.DEST_SRC));\n});"
+
+                    },
+                    "items": []
+
+                },
+                {
+                    "heading": "Copy to Destination Folder(copy) ",
+                    "instruction": "All this task is going to do is take our index.html file and copy it over to our dist folder so our newly created JS files from our transform Gulp task above can be referenced by our index.html page",
+                    "code": {
+                        "language": "language-javascript",
+                        "content": "gulp.task('copy', function(){\ngulp.src(path.HTML)\n .pipe(gulp.dest(path.DEST));\n});"
+
+                    },
+                    "items": []
+
+                }
+            ]
+
+        },
+        {
+            "heading": "Gulp Tasks for Production",
+            "instruction": "",
+            "code": null,
+            "items": [
+                {
+                    "heading": "Concatenate and Minify (build)",
+                    "instruction": "Our first task is going to be called transform and it’s going to be what transforms our JSX into JS. We create a gulp task called transform and pass it a callback function. In our callback function we grab the path.JSX array. Gulp then gets each one of those files, transforms them using the react method we initialized earlier then pipes that outcome to dist/src.",
+                    "code": {
+                        "language": "language-javascript",
+                        "content": "gulp.task('build', function(){\n gulp.src(path.JSX) \n.pipe(react())\n .pipe(concat(path.MINIFIED_OUT))\n.pipe(uglify(path.MINIFIED_OUT))\n.pipe(gulp.dest(path.DEST_BUILD));\n});"
+
+                    },
+                    "items": []
+
+                },
+                {
+                    "heading": "Replace with minified Script (replaceHTML) ",
+                    "instruction": "whenever we run gulp build, we then need to go and change our HTML to reference the new build.min.js file rather than src/App.js and whatever other script tags we’re referencing here. What if there were a way to, whenever we ran our production gulp tasks, to replace all of our <script> tags with just our new <script src=”build/build.mins.js”> script and then output that new file to our dist folder? .",
+                    "code": null,
+                    "items": [
+                        {
+                            "heading": "Add build script comment in Index File",
+                            "instruction": "Well, there is. The way we’re going to do that is with a gulp-html-replace. First, we need to head over to our index.html in our main src folder and make some additions. Go ahead and modify the original child/parent/App.js scripts to be wrapped in comments like this",
+                            "code": {
+                                "language": "language-javascript",
+                                "content": "<!-- build:js -->\n<script src='src/Child.js'></script> \n<script src='src/Parent.js'></script> \n<script src='src/App.js'></script>\n<!-- endbuild -->"
+
+                            },
+                            "items": []
+
+                        },
+                        {
+                            "heading": "Gulp task ",
+                            "instruction": "What’s going to happen is we’re going to tell Gulp, 'Hey Gulp, when I tell you to, concat and minify all my JS files and output them to a new dist/build folder. As you’re doing that go to my copied index.html page in my dist folder and replace the build:js comment and whatever is inside of it with this new script tag <script src='build/build.min.js'></script> but don’t change my original index.html file in my normal src folder because I still want to develop with that.'",
+                            "code": {
+                                "language": "language-javascript",
+                                "content": "gulp.task('replaceHTML', function(){\ngulp.src(path.HTML)\n.pipe(htmlreplace({\n'js': 'build/' + path.MINIFIED_OUT\n}))\n.pipe(gulp.dest(path.DEST));\n});"
+
+                            },
+                            "items": []
+
+                        },
+                        {
+                            "heading": "Production Task",
+                            "instruction": "Very last step is now that both of our production tasks are ready, we need to create another task that wraps both of those tasks in one. We do that with the following code",
+                            "code": {
+                                "language": "language-javascript",
+                                "content": "gulp.task('production', ['replaceHTML', 'build']);"
+
+                            },
+                            "items": []
+
+                        }
+                    ]
+
+                }
+            ]
+
+        },
+        {
+            "heading": "Seperate Development and Production Tasks",
+            "instruction": "Very last step is now that both of our production tasks are ready, we need to create another task that wraps both of those tasks in one. We do that with the following code",
+            "code": {
+                "language": "language-javascript",
+                "content": "gulp.task('build', function(){\n gulp.src(path.JSX) \n.pipe(react())\n .pipe(concat(path.MINIFIED_OUT))\n.pipe(uglify(path.MINIFIED_OUT))\n.pipe(gulp.dest(path.DEST_BUILD));\n});"
+
+            },
+            "items": []
+
+         }
+
+
+]
+}

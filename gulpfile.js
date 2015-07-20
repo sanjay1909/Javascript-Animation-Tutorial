@@ -5,13 +5,13 @@ var react = require('gulp-react');
 var htmlreplace = require('gulp-html-replace');
 
 var path = {
-    HTML: 'src/index.html',
-    ALL: ['src/js/*.jsx', 'src/js/**/*.jsx', 'src/index.html'],
-    JSX: ['src/js/*.jsx', 'src/js/**/*.jsx'],
+    HTML: 'react/workflow/index.html',
+    ALL: ['react/workflow/*.jsx', 'react/workflow/**/*.jsx', 'react/workflow/index.html'],
+    JSX: ['react/workflow/*.jsx', 'react/workflow/**/*.jsx'],
     MINIFIED_OUT: 'build.min.js',
-    DEST_SRC: 'src/dist/src',
-    DEST_BUILD: 'src/dist/build',
-    DEST: 'src/dist'
+    DEST_SRC: 'react/workflow/dist/src',
+    DEST_BUILD: 'react/workflow/dist/build',
+    DEST: 'react/workflow/dist'
 };
 
 gulp.task('transform', function () {
@@ -29,4 +29,4 @@ gulp.task('watch', function () {
     gulp.watch(path.ALL, ['transform', 'copy']);
 });
 
-gulp.task('default', ['watch']);
+gulp.task('default', ['transform', 'copy']);
