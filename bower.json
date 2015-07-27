@@ -1,24 +1,23 @@
 {
-  "name": "Tutorials",
-  "version": "0.0.2",
-  "homepage": "https://github.com/sanjay1909/Tutorials",
-  "authors": [
+    "name": "Tutorials",
+    "version": "0.0.2",
+    "homepage": "https://github.com/sanjay1909/Tutorials",
+    "authors": [
     "Sanjay krishna anbalagan <sanjay1909@gmail.com>"
   ],
-  "description": "Shairng techincal materials i learned.",
-  "main": "index.html",
-  "keywords": [
+    "description": "Shairng techincal materials i learned.",
+    "main": "index.html",
+    "keywords": [
     "javascript",
     "css",
     "dom"
   ],
-  "license": "MIT",
-  "dependencies": {
-    "font-awesome": "~4.3.0",
-    "bootstrap": "~3.3.4",
-    "react": "~0.13.3",
-    "underscore": "~1.8.3",
-    "WeaveCoreJS": "https://github.com/sanjay1909/WeaveCoreJS.git",
-    "tinymce": "~4.2.1"
-  }
+    "license": "MIT",
+    "dependencies": {
+        "font-awesome": "~4.3.0",
+        "bootstrap": "~3.3.4",
+        "react": "~0.13.3",
+        "underscore": "~1.8.3",
+        "WeaveCoreJS": "https://github.com/sanjay1909/WeaveCoreJS.git"
+    }
 }
