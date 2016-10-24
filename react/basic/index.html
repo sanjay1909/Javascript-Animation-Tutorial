@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+o<!DOCTYPE html>
 <html>
 
 <head>
@@ -89,18 +89,18 @@
         <div class="react">
             <pre>
             <code class="javascript">
-var Counter = React.createClass({
-    getInitialState: function(){
-        return {
+export class Counter extends React.Component{
+    constructor(){
+        this.state =  {
             count: 5
         }
-    },
-    render: function(){
+    }
+    render(){
         return (
             &lt;h1>{this.state.count}&lt;/h1>
         )
     }
-});
+};
 
 React.render(&lt;Counter/>,
             document.getElementById('reactDiv')
