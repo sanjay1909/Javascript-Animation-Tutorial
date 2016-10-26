@@ -178,34 +178,33 @@
         <div class="react">
             <pre>
             <code class="javascript">
-var FilteredList = React.createClass({
-  filterList: function(event){
+class FilteredList extends React.Component{
+  constructor(props){
+    super(props)
+    this.state = {
+        initialItems: [
+             "Apples",
+             "Broccoli",
+             "Chicken",
+             "Duck",
+             "Eggs",
+             "Fish",
+             "Granola",
+             "Cereal"
+            ],
+       items: []
+    }
+  }
+  filterList = (event) =>{
     var updatedList = this.state.initialItems;
-    updatedList = updatedList.filter(function(item){
+    updatedList = updatedList.filter((item)=>{
       return item.toLowerCase().search(
         event.target.value.toLowerCase()) !== -1;
     });
     this.setState({items: updatedList});
-  },
-  getInitialState: function(){
-     return {
-       initialItems: [
-         "Apples",
-         "Broccoli",
-         "Chicken",
-         "Duck",
-         "Eggs",
-         "Fish",
-         "Granola",
-         "Cereal"
-       ],
-       items: []
-     }
-  },
-  componentWillMount: function(){
-    this.setState({items: this.state.initialItems})
-  },
-  render: function(){
+  }
+    
+  render(){
     return (
       &lt;div className="filter-list">
       &lt;br>&lt;/br>
@@ -214,10 +213,10 @@ var FilteredList = React.createClass({
       &lt;/div>
     );
   }
-});
+};
 
-var List = React.createClass({
-  render: function(){
+class List extends React.Component{
+  render(){
     return (
       &lt;ul>
       {
@@ -228,7 +227,7 @@ var List = React.createClass({
       &lt;/ul>
     )
   }
-});
+};
 
 React.render(&lt;FilteredList/>, document.getElementById('reactDiv'));
             </code>
